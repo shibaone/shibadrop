@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import { SeaDrop } from "../SeaDrop.sol";
+import { ShibaDrop } from "../ShibaDrop.sol";
 
 contract MaliciousRecipient {
     bool public startAttack;
     address public token;
-    SeaDrop public seaDrop;
+    ShibaDrop public seaDrop;
 
     receive() external payable {
         if (startAttack) {
@@ -25,7 +25,7 @@ contract MaliciousRecipient {
         startAttack = true;
     }
 
-    function attack(SeaDrop _seaDrop, address _token) external payable {
+    function attack(ShibaDrop _seaDrop, address _token) external payable {
         token = _token;
         seaDrop = _seaDrop;
 
@@ -37,7 +37,7 @@ contract MaliciousRecipient {
         });
 
         token = address(0);
-        seaDrop = SeaDrop(address(0));
+        seaDrop = ShibaDrop(address(0));
     }
 
     function onERC721Received(

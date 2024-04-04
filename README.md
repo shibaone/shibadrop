@@ -1,19 +1,10 @@
-![SeaDrop_GithubCover](img/seadrop-banner.png)
+# ShibaDrop
 
-[![Version][version-badge]][version-link]
-[![Test CI][ci-badge]][ci-link]
-[![Code Coverage][coverage-badge]][coverage-link]
-[![License][license-badge]][license-link]
-[![Docs][docs-badge]][docs-link]
-[![Discussions][discussions-badge]][discussions-link]
-
-# SeaDrop
-
-SeaDrop is a contract for conducting primary NFT drops on evm-compatible blockchains.
+ShibaDrop is a contract for conducting primary NFT drops on evm-compatible blockchains.
 
 ## Table of Contents
 
-- [SeaDrop](#seadrop)
+- [ShibaDrop](#shibadrop)
   - [Table of Contents](#table-of-contents)
   - [Background](#background)
   - [Deployments](#deployments)
@@ -28,16 +19,16 @@ SeaDrop is a contract for conducting primary NFT drops on evm-compatible blockch
 
 ## Background
 
-SeaDrop is a contract to perform primary drops on evm-compatible blockchains. The types of drops supported are public drops, allow list stages, token gated drops, and server-side signed mints. An implementing token contract should contain the methods to interface with `SeaDrop` through an authorized user such as an Owner or Administrator.
+ShibaDrop is a contract to perform primary drops on evm-compatible blockchains. The types of drops supported are public drops, allow list stages, token gated drops, and server-side signed mints. An implementing token contract should contain the methods to interface with `ShibaDrop` through an authorized user such as an Owner or Administrator.
 
-Future SeaDrop contracts are envisioned to contain additional functionality like descending dutch auction mechanisms and payment in ERC20 tokens.
+Future ShibaDrop contracts are envisioned to contain additional functionality like descending dutch auction mechanisms and payment in ERC20 tokens.
 
 ## Deployments
 
 <table>
 <tr>
 <th>Network</th>
-<th>SeaDrop 1.0</th>
+<th>ShibaDrop 1.0</th>
 </tr>
 
 <tr><td>Ethereum</td><td rowspan="17">
@@ -62,27 +53,31 @@ Future SeaDrop contracts are envisioned to contain additional functionality like
 <tr><td>Gnosis Chain</td></tr>
 </table>
 
-To deploy to a new EVM chain, follow the [steps outlined here](docs/SeaDropDeployment.md).
+To deploy to a new EVM chain, follow the [steps outlined here](docs/ShibaDropDeployment.md).
 
 ## Diagram
 
-![SeaDrop Diagram](img/seadrop-diagram.png)
+![ShibaDrop Diagram](img/shibadrop-diagram.png)
 
-This diagram shows the logic flow in the case that a drop is hosted on OpenSea, with an optional mint hosted elsewhere. Note that a fee recipient is not required to integrate with SeaDrop, and a fee recipient may be any address.
+This diagram shows the logic flow in the case that a drop is hosted on OpenSea, with an optional mint hosted elsewhere. Note that a fee recipient is not required to integrate with ShibaDrop, and a fee recipient may be any address.
 
 ## Docs
 
-- [SeaDrop Deployment](docs/SeaDropDeployment.md)
-- [SeaDrop Token Deployment](docs/SeaDropTokenDeployment.md)
+- [ShibaDrop Deployment](docs/ShibaDropDeployment.md)
+- [ShibaDrop Token Deployment](docs/ShibaDropTokenDeployment.md)
 - [Bring Your Own Token Contract](docs/BringYourOwnTokenContract.md)
 - [Provenance Hash](docs/ProvenanceHash.md)
+
+## Install correct node version
+
+nvm use
 
 ## Install
 
 To install dependencies and compile contracts:
 
 ```bash
-git clone --recurse-submodules https://github.com/ProjectOpenSea/seadrop && cd seadrop
+git clone --recurse-submodules https://github.com/balajipachai/shibadrop.git && cd shibadrop
 yarn install
 yarn build
 ```
@@ -104,7 +99,7 @@ yarn profile
 
 ### Foundry Tests
 
-SeaDrop also includes a suite of fuzzing tests written in solidity with Foundry.
+ShibaDrop also includes a suite of fuzzing tests written in solidity with Foundry.
 
 To install Foundry (assuming a Linux or macOS system):
 
@@ -164,11 +159,11 @@ Lint checks utilize prettier, prettier-plugin-solidity, and solhint.
 
 ## Audits
 
-SeaDrop was audited after development by [Spearbit](https://spearbit.com/), read the report [here](./assets/spearbit-seadrop-audit.pdf).
+ShibaDrop was audited after development by [Spearbit](https://spearbit.com/), read the report [here](./assets/spearbit-shibadrop-audit.pdf).
 
 ## Contributing
 
-Contributions to SeaDrop are welcome by anyone interested in writing more tests, improving readability, optimizing for gas efficiency, or extending the protocol with new features.
+Contributions to ShibaDrop are welcome by anyone interested in writing more tests, improving readability, optimizing for gas efficiency, or extending the protocol with new features.
 
 When making a pull request, ensure that:
 
@@ -188,15 +183,15 @@ When making a pull request, ensure that:
 
 [MIT](LICENSE) Copyright 2022 Ozone Networks, Inc.
 
-[version-badge]: https://img.shields.io/github/package-json/v/ProjectOpenSea/seadrop
-[version-link]: https://github.com/ProjectOpenSea/seadrop/blob/main/package.json
-[ci-badge]: https://github.com/ProjectOpenSea/seadrop/actions/workflows/test.yml/badge.svg
-[ci-link]: https://github.com/ProjectOpenSea/seadrop/actions/workflows/test.yml
-[coverage-badge]: https://coveralls.io/repos/github/ProjectOpenSea/seadrop/badge.svg?branch=main
-[coverage-link]: https://coveralls.io/github/ProjectOpenSea/seadrop?branch=main
-[license-badge]: https://img.shields.io/github/license/ProjectOpenSea/seadrop
-[license-link]: https://github.com/ProjectOpenSea/seadrop/blob/main/LICENSE
-[docs-badge]: https://img.shields.io/badge/SeaDrop-documentation-informational
-[docs-link]: https://github.com/ProjectOpenSea/seadrop/tree/main/docs
-[discussions-badge]: https://img.shields.io/badge/SeaDrop-discussions-blueviolet
-[discussions-link]: https://github.com/ProjectOpenSea/seadrop/discussions
+[version-badge]: https://img.shields.io/github/package-json/v/ProjectOpenSea/shibadrop
+[version-link]: https://github.com/ProjectOpenSea/shibadrop/blob/main/package.json
+[ci-badge]: https://github.com/ProjectOpenSea/shibadrop/actions/workflows/test.yml/badge.svg
+[ci-link]: https://github.com/ProjectOpenSea/shibadrop/actions/workflows/test.yml
+[coverage-badge]: https://coveralls.io/repos/github/ProjectOpenSea/shibadrop/badge.svg?branch=main
+[coverage-link]: https://coveralls.io/github/ProjectOpenSea/shibadrop?branch=main
+[license-badge]: https://img.shields.io/github/license/ProjectOpenSea/shibadrop
+[license-link]: https://github.com/ProjectOpenSea/shibadrop/blob/main/LICENSE
+[docs-badge]: https://img.shields.io/badge/ShibaDrop-documentation-informational
+[docs-link]: https://github.com/ProjectOpenSea/shibadrop/tree/main/docs
+[discussions-badge]: https://img.shields.io/badge/ShibaDrop-discussions-blueviolet
+[discussions-link]: https://github.com/ProjectOpenSea/shibadrop/discussions

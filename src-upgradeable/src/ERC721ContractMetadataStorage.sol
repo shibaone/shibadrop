@@ -7,8 +7,8 @@ import {
 } from "./ERC721ContractMetadataUpgradeable.sol";
 
 import {
-    ISeaDropTokenContractMetadataUpgradeable
-} from "./interfaces/ISeaDropTokenContractMetadataUpgradeable.sol";
+    IShibaDropTokenContractMetadataUpgradeable
+} from "./interfaces/IShibaDropTokenContractMetadataUpgradeable.sol";
 
 library ERC721ContractMetadataStorage {
     struct Layout {
@@ -23,7 +23,7 @@ library ERC721ContractMetadataStorage {
         bytes32 _provenanceHash;
         /// @notice Track the royalty info: address to receive royalties, and
         ///         royalty basis points.
-        ISeaDropTokenContractMetadataUpgradeable.RoyaltyInfo _royaltyInfo;
+        IShibaDropTokenContractMetadataUpgradeable.RoyaltyInfo _royaltyInfo;
         /// @notice Track the transfer validator.
         ///         The null address means no transfer validator is set.
         address _transferValidator;

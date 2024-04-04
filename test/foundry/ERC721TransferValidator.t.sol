@@ -3,22 +3,24 @@ pragma solidity 0.8.17;
 
 import { TestHelper } from "test/foundry/utils/TestHelper.sol";
 
-import { ERC721SeaDrop } from "seadrop/ERC721SeaDrop.sol";
+import { ERC721ShibaDrop } from "shibadrop/ERC721ShibaDrop.sol";
 
 import {
     ITransferValidator721
-} from "seadrop/interfaces/ITransferValidator.sol";
+} from "shibadrop/interfaces/ITransferValidator.sol";
 
-import { MockTransferValidator } from "seadrop/test/MockTransferValidator.sol";
+import {
+    MockTransferValidator
+} from "shibadrop/test/MockTransferValidator.sol";
 
 import { TwoStepOwnable } from "utility-contracts/TwoStepOwnable.sol";
 
-contract ERC721SeaDropWithMint is ERC721SeaDrop {
+contract ERC721ShibaDropWithMint is ERC721ShibaDrop {
     constructor(
         string memory name,
         string memory symbol,
         address[] memory allowedSeaDrop
-    ) ERC721SeaDrop(name, symbol, allowedSeaDrop) {}
+    ) ERC721ShibaDrop(name, symbol, allowedSeaDrop) {}
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);
@@ -31,12 +33,12 @@ contract ERC721TransferValidatorTest is TestHelper {
     MockTransferValidator transferValidatorAlwaysReverts =
         new MockTransferValidator(true);
 
-    ERC721SeaDropWithMint token_;
+    ERC721ShibaDropWithMint token_;
 
     event TransferValidatorUpdated(address oldValidator, address newValidator);
 
     function setUp() public {
-        token_ = new ERC721SeaDropWithMint("", "", new address[](0));
+        token_ = new ERC721ShibaDropWithMint("", "", new address[](0));
     }
 
     function testOnlyOwnerCanSetTransferValidator() public {

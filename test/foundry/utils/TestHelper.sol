@@ -3,17 +3,19 @@ pragma solidity 0.8.17;
 
 import "forge-std/Test.sol";
 
-import { MintParams } from "seadrop/lib/SeaDropStructs.sol";
+import { MintParams } from "shibadrop/lib/ShibaDropStructs.sol";
 
-import { SeaDrop } from "seadrop/SeaDrop.sol";
+import { ShibaDrop } from "shibadrop/ShibaDrop.sol";
 
-import { ERC721SeaDrop } from "seadrop/ERC721SeaDrop.sol";
+import { ERC721ShibaDrop } from "shibadrop/ERC721ShibaDrop.sol";
 
-import { SeaDropErrorsAndEvents } from "seadrop/lib/SeaDropErrorsAndEvents.sol";
+import {
+    ShibaDropErrorsAndEvents
+} from "shibadrop/lib/ShibaDropErrorsAndEvents.sol";
 
-contract TestHelper is Test, SeaDropErrorsAndEvents {
-    SeaDrop seadrop = new SeaDrop();
-    ERC721SeaDrop token;
+contract TestHelper is Test, ShibaDropErrorsAndEvents {
+    ShibaDrop shibadrop = new ShibaDrop();
+    ERC721ShibaDrop token;
 
     address creator = makeAddr("creator");
 
@@ -64,7 +66,7 @@ contract TestHelper is Test, SeaDropErrorsAndEvents {
                 "address verifyingContract"
             ")"
         );
-    bytes32 internal constant _NAME_HASH = keccak256("SeaDrop");
+    bytes32 internal constant _NAME_HASH = keccak256("ShibaDrop");
     bytes32 internal constant _VERSION_HASH = keccak256("1.0");
     uint256 internal immutable _CHAIN_ID = block.chainid;
     bytes32 internal immutable _DOMAIN_SEPARATOR = _deriveDomainSeparator();
@@ -177,7 +179,7 @@ contract TestHelper is Test, SeaDropErrorsAndEvents {
                 _NAME_HASH,
                 _VERSION_HASH,
                 block.chainid,
-                address(seadrop)
+                address(shibadrop)
             )
         );
     }

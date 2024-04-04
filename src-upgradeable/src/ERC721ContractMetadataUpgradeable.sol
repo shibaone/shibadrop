@@ -2,8 +2,8 @@
 pragma solidity 0.8.17;
 
 import {
-    ISeaDropTokenContractMetadataUpgradeable
-} from "./interfaces/ISeaDropTokenContractMetadataUpgradeable.sol";
+    IShibaDropTokenContractMetadataUpgradeable
+} from "./interfaces/IShibaDropTokenContractMetadataUpgradeable.sol";
 
 import {
     ERC721AConduitPreapprovedUpgradeable
@@ -51,7 +51,7 @@ import {
 contract ERC721ContractMetadataUpgradeable is
     ERC721AConduitPreapprovedUpgradeable,
     TwoStepOwnableUpgradeable,
-    ISeaDropTokenContractMetadataUpgradeable
+    IShibaDropTokenContractMetadataUpgradeable
 {
     using ERC721ContractMetadataStorage for ERC721ContractMetadataStorage.Layout;
 
@@ -328,7 +328,9 @@ contract ERC721ContractMetadataUpgradeable is
     ) internal virtual override {
         if (from != address(0) && to != address(0)) {
             // Call the transfer validator if one is set.
-            address transferValidator = ERC721ContractMetadataStorage.layout()._transferValidator;
+            address transferValidator = ERC721ContractMetadataStorage
+                .layout()
+                ._transferValidator;
             if (transferValidator != address(0)) {
                 ITransferValidator721(transferValidator).validateTransfer(
                     msg.sender,

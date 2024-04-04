@@ -6,13 +6,13 @@ import { faucet } from "./utils/faucet";
 import { VERSION } from "./utils/helpers";
 import { whileImpersonating } from "./utils/impersonate";
 
-import type { ERC721SeaDrop, ISeaDrop } from "../typechain-types";
+import type { ERC721ShibaDrop, IShibaDrop } from "../typechain-types";
 import type { Wallet } from "ethers";
 
 describe(`ERC721ContractMetadata (v${VERSION})`, function () {
   const { provider } = ethers;
-  let seadrop: ISeaDrop;
-  let token: ERC721SeaDrop;
+  let shibadrop: IShibaDrop;
+  let token: ERC721ShibaDrop;
   let owner: Wallet;
   let minter: Wallet;
 
@@ -32,16 +32,16 @@ describe(`ERC721ContractMetadata (v${VERSION})`, function () {
       await faucet(wallet.address, provider);
     }
 
-    // Deploy SeaDrop to mint tokens
-    const SeaDrop = await ethers.getContractFactory("SeaDrop", owner);
-    seadrop = await SeaDrop.deploy();
+    // Deploy ShibaDrop to mint tokens
+    const ShibaDrop = await ethers.getContractFactory("ShibaDrop", owner);
+    shibadrop = await ShibaDrop.deploy();
 
     // Deploy token
-    const ERC721SeaDrop = await ethers.getContractFactory(
-      "ERC721SeaDrop",
+    const ERC721ShibaDrop = await ethers.getContractFactory(
+      "ERC721ShibaDrop",
       owner
     );
-    token = await ERC721SeaDrop.deploy("", "", [seadrop.address]);
+    token = await ERC721ShibaDrop.deploy("", "", [shibadrop.address]);
 
     await token.connect(owner).setMaxSupply(5);
   });
@@ -61,7 +61,7 @@ describe(`ERC721ContractMetadata (v${VERSION})`, function () {
 
     // it should emit BatchMetadataUpdate when totalSupply is greater than 0
     await whileImpersonating(
-      seadrop.address,
+      shibadrop.address,
       provider,
       async (impersonatedSigner) => {
         await token.connect(impersonatedSigner).mintSeaDrop(owner.address, 2);
@@ -172,7 +172,7 @@ describe(`ERC721ContractMetadata (v${VERSION})`, function () {
     ).to.emit(token, "BatchMetadataUpdate");
 
     await whileImpersonating(
-      seadrop.address,
+      shibadrop.address,
       provider,
       async (impersonatedSigner) => {
         await token.connect(impersonatedSigner).mintSeaDrop(owner.address, 2);

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.17;
 
-import { ERC721SeaDropUpgradeable } from "./ERC721SeaDropUpgradeable.sol";
+import { ERC721ShibaDropUpgradeable } from "./ERC721ShibaDropUpgradeable.sol";
 
 library ExampleTokenStorage {
     struct Layout {
@@ -21,11 +21,11 @@ library ExampleTokenStorage {
 }
 
 /*
- * @notice This contract uses ERC721SeaDrop,
- *         an ERC721A token contract that is compatible with SeaDrop.
+ * @notice This contract uses ERC721ShibaDrop,
+ *         an ERC721A token contract that is compatible with ShibaDrop.
  *         The set burn address is the only sender that can burn tokens.
  */
-contract ExampleToken is ERC721SeaDropUpgradeable {
+contract ExampleToken is ERC721ShibaDropUpgradeable {
     using ExampleTokenStorage for ExampleTokenStorage.Layout;
 
     /**
@@ -35,14 +35,14 @@ contract ExampleToken is ERC721SeaDropUpgradeable {
 
     /**
      * @notice Initialize the token contract with its name, symbol,
-     *         and allowed SeaDrop addresses.
+     *         and allowed ShibaDrop addresses.
      */
     function initialize(
         string memory name,
         string memory symbol,
         address[] memory allowedSeaDrop
     ) external initializer initializerERC721A {
-        ERC721SeaDropUpgradeable.__ERC721SeaDrop_init(
+        ERC721ShibaDropUpgradeable.__ERC721ShibaDrop_init(
             name,
             symbol,
             allowedSeaDrop
