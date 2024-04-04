@@ -22,13 +22,13 @@ contract ERC721ShibaDropCloneFactoryTest is Test {
         factory.createClone("name", "symbol", bytes32("1"));
     }
 
-    event SeaDropTokenDeployed();
+    event ShibaDropTokenDeployed();
 
     function testClone1() public {
         vm.createSelectFork(getChain("mainnet").rpcUrl);
         factory = new ERC721ShibaDropCloneFactory();
         vm.expectEmit(false, false, false, false);
-        emit SeaDropTokenDeployed();
+        emit ShibaDropTokenDeployed();
         address clone = factory.createClone("name", "symbol", bytes32("1"));
         ERC721ShibaDropCloneable token = ERC721ShibaDropCloneable(clone);
 

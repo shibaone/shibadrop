@@ -36,19 +36,19 @@ contract ERC721ShibaDropRandomOffsetUpgradeable is ERC721ShibaDropUpgradeable {
     function __ERC721ShibaDropRandomOffset_init(
         string memory name,
         string memory symbol,
-        address[] memory allowedSeaDrop
+        address[] memory allowedShibaDrop
     ) internal onlyInitializing {
         __ERC721A_init_unchained(name, symbol);
         __ConstructorInitializable_init_unchained();
         __TwoStepOwnable_init_unchained();
         __ERC721ContractMetadata_init_unchained(name, symbol);
         __ReentrancyGuard_init_unchained();
-        __ERC721ShibaDrop_init_unchained(name, symbol, allowedSeaDrop);
-        __ERC721ShibaDrop_init_unchained(name, symbol, allowedSeaDrop);
+        __ERC721ShibaDrop_init_unchained(name, symbol, allowedShibaDrop);
+        __ERC721ShibaDrop_init_unchained(name, symbol, allowedShibaDrop);
         __ERC721ShibaDropRandomOffset_init_unchained(
             name,
             symbol,
-            allowedSeaDrop
+            allowedShibaDrop
         );
     }
 

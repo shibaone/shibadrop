@@ -21,9 +21,9 @@ contract ERC721ShibaDropMintPublicTest is TestHelper {
     function setUp() public {
         attacker = new MaliciousRecipient();
         // Deploy the ERC721ShibaDrop token.
-        address[] memory allowedSeaDrop = new address[](1);
-        allowedSeaDrop[0] = address(shibadrop);
-        token = new ERC721ShibaDrop("", "", allowedSeaDrop);
+        address[] memory allowedShibaDrop = new address[](1);
+        allowedShibaDrop[0] = address(shibadrop);
+        token = new ERC721ShibaDrop("", "", allowedShibaDrop);
 
         // Set the max supply to 1000.
         token.setMaxSupply(1000);
@@ -216,7 +216,9 @@ contract ERC721ShibaDropMintPublicTest is TestHelper {
         public
         validateArgs(args)
     {
-        vm.expectRevert(INonFungibleShibaDropToken.OnlyAllowedSeaDrop.selector);
-        token.mintSeaDrop(args.minter, args.numMints);
+        vm.expectRevert(
+            INonFungibleShibaDropToken.OnlyAllowedShibaDrop.selector
+        );
+        token.mintShibaDrop(args.minter, args.numMints);
     }
 }

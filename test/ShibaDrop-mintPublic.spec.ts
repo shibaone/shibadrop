@@ -105,7 +105,7 @@ describe(`ShibaDrop - Mint Public (v${VERSION})`, function () {
           value,
         })
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -133,7 +133,7 @@ describe(`ShibaDrop - Mint Public (v${VERSION})`, function () {
           { value }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -229,7 +229,7 @@ describe(`ShibaDrop - Mint Public (v${VERSION})`, function () {
           value,
         })
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -267,7 +267,7 @@ describe(`ShibaDrop - Mint Public (v${VERSION})`, function () {
           }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -377,7 +377,7 @@ describe(`ShibaDrop - Mint Public (v${VERSION})`, function () {
           }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,

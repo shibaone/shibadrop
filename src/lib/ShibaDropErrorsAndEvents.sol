@@ -229,7 +229,7 @@ interface ShibaDropErrorsAndEvents {
      *                       through mintPublic() have
      *                       dropStageIndex of 0.
      */
-    event SeaDropMint(
+    event ShibaDropMint(
         address indexed nftContract,
         address indexed minter,
         address indexed feeRecipient,

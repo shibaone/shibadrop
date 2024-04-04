@@ -29,9 +29,9 @@ contract TestShibaDrop is TestHelper {
 
     function setUp() public {
         // Deploy the ERC721ShibaDrop token.
-        address[] memory allowedSeaDrop = new address[](1);
-        allowedSeaDrop[0] = address(shibadrop);
-        token = new ERC721ShibaDrop("", "", allowedSeaDrop);
+        address[] memory allowedShibaDrop = new address[](1);
+        allowedShibaDrop[0] = address(shibadrop);
+        token = new ERC721ShibaDrop("", "", allowedShibaDrop);
 
         // Deploy a standard ERC721 token.
         standard721Token = new TestERC721();

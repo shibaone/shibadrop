@@ -30,7 +30,7 @@ interface ERC721ShibaDropStructsErrorsAndEvents {
   /**
    * @notice An event to signify that a ShibaDrop token contract was deployed.
    */
-  event SeaDropTokenDeployed();
+  event ShibaDropTokenDeployed();
 
   /**
    * @notice A struct to configure multiple contract options at a time.

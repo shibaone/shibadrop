@@ -77,7 +77,7 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
     const tx = await ERC721ShibaDrop.deploy("", "", [shibadrop.address]);
     const receipt = await tx.deployTransaction.wait();
     const event = (receipt as any).events.filter(
-      ({ event }: any) => event === "SeaDropTokenDeployed"
+      ({ event }: any) => event === "ShibaDropTokenDeployed"
     );
     expect(event).to.not.be.null;
   });
@@ -226,7 +226,9 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
       shibadrop.address,
       provider,
       async (impersonatedSigner) => {
-        await token.connect(impersonatedSigner).mintSeaDrop(minter.address, 1);
+        await token
+          .connect(impersonatedSigner)
+          .mintShibaDrop(minter.address, 1);
       }
     );
 
@@ -245,20 +247,20 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
       provider,
       async (impersonatedSigner) => {
         await expect(
-          token.connect(impersonatedSigner).mintSeaDrop(minter.address, 1)
+          token.connect(impersonatedSigner).mintShibaDrop(minter.address, 1)
         )
           .to.emit(token, "Transfer")
           .withArgs(ethers.constants.AddressZero, minter.address, 1);
 
         await expect(
-          token.connect(impersonatedSigner).mintSeaDrop(minter.address, 1)
+          token.connect(impersonatedSigner).mintShibaDrop(minter.address, 1)
         ).to.be.revertedWith("MintQuantityExceedsMaxSupply(2, 1)");
       }
     );
 
     await expect(
-      token.connect(owner).mintSeaDrop(minter.address, 1)
-    ).to.be.revertedWith("OnlyAllowedSeaDrop");
+      token.connect(owner).mintShibaDrop(minter.address, 1)
+    ).to.be.revertedWith("OnlyAllowedShibaDrop");
   });
 
   it("Should return supportsInterface true for supported interfaces", async () => {
@@ -293,9 +295,9 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
     }
 
     // Ensure the interface that ShibaDrop 1.0 strictly checks for
-    // in the modifier `onlyINonFungibleSeaDropToken` returns true,
+    // in the modifier `onlyINonFungibleShibaDropToken` returns true,
     // otherwise the contract will not be able to interact with ShibaDrop 1.0.
-    expect(await token.supportsInterface("0x1890fe8e")).to.be.true;
+    expect(await token.supportsInterface("0x9682ceeb")).to.be.true;
 
     // Ensure the interface for ERC-4906 returns true.
     expect(await token.supportsInterface("0x49064906")).to.be.true;
@@ -309,42 +311,42 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
 
   it("Should only let the token owner update the allowed ShibaDrop addresses", async () => {
     await expect(
-      token.connect(creator).updateAllowedSeaDrop([shibadrop.address])
+      token.connect(creator).updateAllowedShibaDrop([shibadrop.address])
     ).to.revertedWith("OnlyOwner");
 
     await expect(
-      token.connect(minter).updateAllowedSeaDrop([shibadrop.address])
+      token.connect(minter).updateAllowedShibaDrop([shibadrop.address])
     ).to.revertedWith("OnlyOwner");
 
-    await expect(token.updateAllowedSeaDrop([shibadrop.address]))
-      .to.emit(token, "AllowedSeaDropUpdated")
+    await expect(token.updateAllowedShibaDrop([shibadrop.address]))
+      .to.emit(token, "AllowedShibaDropUpdated")
       .withArgs([shibadrop.address]);
 
     const address1 = `0x${"1".repeat(40)}`;
     const address2 = `0x${"2".repeat(40)}`;
     const address3 = `0x${"3".repeat(40)}`;
 
-    await expect(token.updateAllowedSeaDrop([shibadrop.address, address1]))
-      .to.emit(token, "AllowedSeaDropUpdated")
+    await expect(token.updateAllowedShibaDrop([shibadrop.address, address1]))
+      .to.emit(token, "AllowedShibaDropUpdated")
       .withArgs([shibadrop.address, address1]);
 
-    await expect(token.updateAllowedSeaDrop([address2]))
-      .to.emit(token, "AllowedSeaDropUpdated")
+    await expect(token.updateAllowedShibaDrop([address2]))
+      .to.emit(token, "AllowedShibaDropUpdated")
       .withArgs([address2]);
 
     await expect(
-      token.updateAllowedSeaDrop([
+      token.updateAllowedShibaDrop([
         address3,
         shibadrop.address,
         address2,
         address1,
       ])
     )
-      .to.emit(token, "AllowedSeaDropUpdated")
+      .to.emit(token, "AllowedShibaDropUpdated")
       .withArgs([address3, shibadrop.address, address2, address1]);
 
-    await expect(token.updateAllowedSeaDrop([shibadrop.address]))
-      .to.emit(token, "AllowedSeaDropUpdated")
+    await expect(token.updateAllowedShibaDrop([shibadrop.address]))
+      .to.emit(token, "AllowedShibaDropUpdated")
       .withArgs([shibadrop.address]);
   });
 
@@ -471,7 +473,7 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
 
   it("Should only let the owner call update functions", async () => {
     const onlyOwnerMethods = [
-      "updateAllowedSeaDrop",
+      "updateAllowedShibaDrop",
       "updatePublicDrop",
       "updateAllowList",
       "updateTokenGatedDrop",
@@ -510,7 +512,7 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
     };
 
     const methodParams: any = {
-      updateAllowedSeaDrop: [[shibadrop.address]],
+      updateAllowedShibaDrop: [[shibadrop.address]],
       updatePublicDrop: [shibadrop.address, publicDrop],
       updateAllowList: [shibadrop.address, allowListData],
       updateTokenGatedDrop: [
@@ -545,10 +547,10 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
         (token as any).connect(creator)[method](...methodParams[method])
       ).to.be.revertedWith("OnlyOwner()");
 
-      if (method !== "updateAllowedSeaDrop") {
+      if (method !== "updateAllowedShibaDrop") {
         await expect(
           (token as any).connect(owner)[method](...paramsWithNonSeaDrop(method))
-        ).to.be.revertedWith("OnlyAllowedSeaDrop()");
+        ).to.be.revertedWith("OnlyAllowedShibaDrop()");
       }
     }
   });
@@ -841,7 +843,9 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
       shibadrop.address,
       provider,
       async (impersonatedSigner) => {
-        await token.connect(impersonatedSigner).mintSeaDrop(minter.address, 3);
+        await token
+          .connect(impersonatedSigner)
+          .mintShibaDrop(minter.address, 3);
       }
     );
 

@@ -153,7 +153,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
      * @notice Ensure only tokens implementing INonFungibleShibaDropToken can
      *         call the update methods.
      */
-    modifier onlyINonFungibleSeaDropToken() virtual {
+    modifier onlyINonFungibleShibaDropToken() virtual {
         if (
             !IERC165(msg.sender).supportsInterface(
                 type(INonFungibleShibaDropToken).interfaceId
@@ -780,7 +780,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
         address feeRecipient
     ) internal nonReentrant {
         // Mint the token(s).
-        INonFungibleShibaDropToken(nftContract).mintSeaDrop(minter, quantity);
+        INonFungibleShibaDropToken(nftContract).mintShibaDrop(minter, quantity);
 
         if (mintPrice != 0) {
             // Split the payment between the creator and fee recipient.
@@ -788,7 +788,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
         }
 
         // Emit an event for the mint.
-        emit SeaDropMint(
+        emit ShibaDropMint(
             nftContract,
             minter,
             feeRecipient,
@@ -1015,7 +1015,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
      */
     function updateDropURI(string calldata dropURI)
         external
-        onlyINonFungibleSeaDropToken
+        onlyINonFungibleShibaDropToken
     {
         // Emit an event with the update.
         emit DropURIUpdated(msg.sender, dropURI);
@@ -1036,7 +1036,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
     function updatePublicDrop(PublicDrop calldata publicDrop)
         external
         override
-        onlyINonFungibleSeaDropToken
+        onlyINonFungibleShibaDropToken
     {
         // Revert if the fee basis points is greater than 10_000.
         if (publicDrop.feeBps > 10_000) {
@@ -1065,7 +1065,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
     function updateAllowList(AllowListData calldata allowListData)
         external
         override
-        onlyINonFungibleSeaDropToken
+        onlyINonFungibleShibaDropToken
     {
         // Track the previous root.
         bytes32 prevRoot = _allowListMerkleRoots[msg.sender];
@@ -1106,7 +1106,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
     function updateTokenGatedDrop(
         address allowedNftToken,
         TokenGatedDropStage calldata dropStage
-    ) external override onlyINonFungibleSeaDropToken {
+    ) external override onlyINonFungibleShibaDropToken {
         // Ensure the allowedNftToken is not the zero address.
         if (allowedNftToken == address(0)) {
             revert TokenGatedDropAllowedNftTokenCannotBeZeroAddress();
@@ -1174,7 +1174,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
      */
     function updateCreatorPayoutAddress(address payoutAddress)
         external
-        onlyINonFungibleSeaDropToken
+        onlyINonFungibleShibaDropToken
     {
         if (payoutAddress == address(0)) {
             revert CreatorPayoutAddressCannotBeZeroAddress();
@@ -1200,7 +1200,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
      */
     function updateAllowedFeeRecipient(address feeRecipient, bool allowed)
         external
-        onlyINonFungibleSeaDropToken
+        onlyINonFungibleShibaDropToken
     {
         if (feeRecipient == address(0)) {
             revert FeeRecipientCannotBeZeroAddress();
@@ -1247,7 +1247,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
     function updateSignedMintValidationParams(
         address signer,
         SignedMintValidationParams calldata signedMintValidationParams
-    ) external onlyINonFungibleSeaDropToken {
+    ) external onlyINonFungibleShibaDropToken {
         if (signer == address(0)) {
             revert SignerCannotBeZeroAddress();
         }
@@ -1319,7 +1319,7 @@ contract ShibaDrop is IShibaDrop, ReentrancyGuard {
      */
     function updatePayer(address payer, bool allowed)
         external
-        onlyINonFungibleSeaDropToken
+        onlyINonFungibleShibaDropToken
     {
         if (payer == address(0)) {
             revert PayerCannotBeZeroAddress();

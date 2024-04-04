@@ -31,12 +31,12 @@ contract ERC721ShibaDropCloneFactory {
             seaDropCloneableUpgradeableImplementation,
             cloneSalt
         );
-        address[] memory allowedSeaDrop = new address[](1);
-        allowedSeaDrop[0] = DEFAULT_SEADROP;
+        address[] memory allowedShibaDrop = new address[](1);
+        allowedShibaDrop[0] = DEFAULT_SEADROP;
         ERC721ShibaDropCloneable(instance).initialize(
             name,
             symbol,
-            allowedSeaDrop,
+            allowedShibaDrop,
             msg.sender
         );
         return instance;

@@ -43,10 +43,10 @@ contract ShibaDropMintSignedTest is TestHelper {
 
     function setUp() public {
         // Deploy the ERC721ShibaDrop token.
-        address[] memory allowedSeaDrop = new address[](1);
-        allowedSeaDrop[0] = address(shibadrop);
-        token = new ERC721ShibaDrop("", "", allowedSeaDrop);
-        token2 = new ERC721ShibaDrop("", "", allowedSeaDrop);
+        address[] memory allowedShibaDrop = new address[](1);
+        allowedShibaDrop[0] = address(shibadrop);
+        token = new ERC721ShibaDrop("", "", allowedShibaDrop);
+        token2 = new ERC721ShibaDrop("", "", allowedShibaDrop);
 
         // Set the max supply to 1000.
         token.setMaxSupply(1000);

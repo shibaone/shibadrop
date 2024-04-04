@@ -52,10 +52,10 @@ contract ERC721ShibaDropCloneable is
     ReentrancyGuardUpgradeable
 {
     /// @notice Track the allowed ShibaDrop addresses.
-    mapping(address => bool) internal _allowedSeaDrop;
+    mapping(address => bool) internal _allowedShibaDrop;
 
     /// @notice Track the enumerated allowed ShibaDrop addresses.
-    address[] internal _enumeratedAllowedSeaDrop;
+    address[] internal _enumeratedAllowedShibaDrop;
 
     /**
      * @dev Reverts if not an allowed ShibaDrop contract.
@@ -64,9 +64,9 @@ contract ERC721ShibaDropCloneable is
      *
      * @param seaDrop The ShibaDrop address to check if allowed.
      */
-    function _onlyAllowedSeaDrop(address seaDrop) internal view {
-        if (_allowedSeaDrop[seaDrop] != true) {
-            revert OnlyAllowedSeaDrop();
+    function _onlyAllowedShibaDrop(address seaDrop) internal view {
+        if (_allowedShibaDrop[seaDrop] != true) {
+            revert OnlyAllowedShibaDrop();
         }
     }
 
@@ -77,63 +77,65 @@ contract ERC721ShibaDropCloneable is
     function initialize(
         string calldata __name,
         string calldata __symbol,
-        address[] calldata allowedSeaDrop,
+        address[] calldata allowedShibaDrop,
         address initialOwner
     ) public initializer {
         __ERC721ACloneable__init(__name, __symbol);
         __ReentrancyGuard_init();
-        _updateAllowedSeaDrop(allowedSeaDrop);
+        _updateAllowedShibaDrop(allowedShibaDrop);
         _transferOwnership(initialOwner);
-        emit SeaDropTokenDeployed();
+        emit ShibaDropTokenDeployed();
     }
 
     /**
      * @notice Update the allowed ShibaDrop contracts.
      *         Only the owner can use this function.
      *
-     * @param allowedSeaDrop The allowed ShibaDrop addresses.
+     * @param allowedShibaDrop The allowed ShibaDrop addresses.
      */
-    function updateAllowedSeaDrop(address[] calldata allowedSeaDrop)
+    function updateAllowedShibaDrop(address[] calldata allowedShibaDrop)
         external
         virtual
         override
         onlyOwner
     {
-        _updateAllowedSeaDrop(allowedSeaDrop);
+        _updateAllowedShibaDrop(allowedShibaDrop);
     }
 
     /**
      * @notice Internal function to update the allowed ShibaDrop contracts.
      *
-     * @param allowedSeaDrop The allowed ShibaDrop addresses.
+     * @param allowedShibaDrop The allowed ShibaDrop addresses.
      */
-    function _updateAllowedSeaDrop(address[] calldata allowedSeaDrop) internal {
+    function _updateAllowedShibaDrop(address[] calldata allowedShibaDrop)
+        internal
+    {
         // Put the length on the stack for more efficient access.
-        uint256 enumeratedAllowedSeaDropLength = _enumeratedAllowedSeaDrop
+        uint256 enumeratedAllowedShibaDropLength = _enumeratedAllowedShibaDrop
             .length;
-        uint256 allowedSeaDropLength = allowedSeaDrop.length;
+        uint256 allowedShibaDropLength = allowedShibaDrop.length;
 
         // Reset the old mapping.
-        for (uint256 i = 0; i < enumeratedAllowedSeaDropLength; ) {
-            _allowedSeaDrop[_enumeratedAllowedSeaDrop[i]] = false;
+        for (uint256 i = 0; i < enumeratedAllowedShibaDropLength; ) {
+            _allowedShibaDrop[_enumeratedAllowedShibaDrop[i]] = false;
             unchecked {
                 ++i;
             }
         }
 
         // Set the new mapping for allowed ShibaDrop contracts.
-        for (uint256 i = 0; i < allowedSeaDropLength; ) {
-            _allowedSeaDrop[allowedSeaDrop[i]] = true;
+        for (uint256 i = 0; i < allowedShibaDropLength; ) {
+            _allowedShibaDrop[allowedShibaDrop[i]] = true;
             unchecked {
                 ++i;
             }
         }
 
         // Set the enumeration.
-        _enumeratedAllowedSeaDrop = allowedSeaDrop;
+        _enumeratedAllowedShibaDrop = allowedShibaDrop;
 
         // Emit an event for the update.
-        emit AllowedSeaDropUpdated(allowedSeaDrop);
+        emit AllowedShibaDropUpdated(allowedShibaDrop);
     }
 
     /**
@@ -211,14 +213,14 @@ contract ERC721ShibaDropCloneable is
      * @param minter   The address to mint to.
      * @param quantity The number of tokens to mint.
      */
-    function mintSeaDrop(address minter, uint256 quantity)
+    function mintShibaDrop(address minter, uint256 quantity)
         external
         virtual
         override
         nonReentrant
     {
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(msg.sender);
+        _onlyAllowedShibaDrop(msg.sender);
 
         // Extra safety check to ensure the max supply is not exceeded.
         if (_totalMinted() + quantity > maxSupply()) {
@@ -247,7 +249,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the public drop data on ShibaDrop.
         IShibaDrop(shibaDropImpl).updatePublicDrop(publicDrop);
@@ -268,7 +270,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the allow list on ShibaDrop.
         IShibaDrop(shibaDropImpl).updateAllowList(allowListData);
@@ -299,7 +301,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the token gated drop stage.
         IShibaDrop(shibaDropImpl).updateTokenGatedDrop(
@@ -324,7 +326,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the drop URI.
         IShibaDrop(shibaDropImpl).updateDropURI(dropURI);
@@ -346,7 +348,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the creator payout address.
         IShibaDrop(shibaDropImpl).updateCreatorPayoutAddress(payoutAddress);
@@ -370,7 +372,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the allowed fee recipient.
         IShibaDrop(shibaDropImpl).updateAllowedFeeRecipient(
@@ -398,7 +400,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the signer.
         IShibaDrop(shibaDropImpl).updateSignedMintValidationParams(
@@ -424,7 +426,7 @@ contract ERC721ShibaDropCloneable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(shibaDropImpl);
+        _onlyAllowedShibaDrop(shibaDropImpl);
 
         // Update the payer.
         IShibaDrop(shibaDropImpl).updatePayer(payer, allowed);

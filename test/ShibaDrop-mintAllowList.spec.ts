@@ -164,7 +164,7 @@ describe(`ShibaDrop - Mint Allow List (v${VERSION})`, function () {
           { value }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -218,7 +218,7 @@ describe(`ShibaDrop - Mint Allow List (v${VERSION})`, function () {
           proof
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -290,7 +290,7 @@ describe(`ShibaDrop - Mint Allow List (v${VERSION})`, function () {
           { value }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -563,7 +563,7 @@ describe(`ShibaDrop - Mint Allow List (v${VERSION})`, function () {
           { value }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -661,7 +661,7 @@ describe(`ShibaDrop - Mint Allow List (v${VERSION})`, function () {
           { value: maxTotalMintableByWalletMintValue }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -759,7 +759,7 @@ describe(`ShibaDrop - Mint Allow List (v${VERSION})`, function () {
           { value: maxTotalMintableByWalletMintValue }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,

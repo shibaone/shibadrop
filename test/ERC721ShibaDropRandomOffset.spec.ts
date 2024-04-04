@@ -67,7 +67,7 @@ describe(`ERC721ShibaDropRandomOffset (v${VERSION})`, function () {
       async (impersonatedSigner) => {
         await token
           .connect(impersonatedSigner)
-          .mintSeaDrop(minter.address, 100);
+          .mintShibaDrop(minter.address, 100);
       }
     );
 
@@ -96,7 +96,7 @@ describe(`ERC721ShibaDropRandomOffset (v${VERSION})`, function () {
       async (impersonatedSigner) => {
         await token
           .connect(impersonatedSigner)
-          .mintSeaDrop(minter.address, 100);
+          .mintShibaDrop(minter.address, 100);
       }
     );
 

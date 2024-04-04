@@ -44,12 +44,12 @@ contract TestSeaDropSnapshot is TestHelper {
 
     function setUp() public {
         // Deploy the ERC721ShibaDrop token.
-        address[] memory allowedSeaDrop = new address[](1);
-        allowedSeaDrop[0] = address(shibadrop);
+        address[] memory allowedShibaDrop = new address[](1);
+        allowedShibaDrop[0] = address(shibadrop);
         snapshotToken = new ERC721ShibaDropPlusRegularMint(
             "",
             "",
-            allowedSeaDrop
+            allowedShibaDrop
         );
         // Deploy a standard ERC721 token.
         tokenGatedEligible = new TestERC721();

@@ -4,9 +4,9 @@ pragma solidity ^0.8.0;
 library ERC721ShibaDropStorage {
     struct Layout {
         /// @notice Track the allowed ShibaDrop addresses.
-        mapping(address => bool) _allowedSeaDrop;
+        mapping(address => bool) _allowedShibaDrop;
         /// @notice Track the enumerated allowed ShibaDrop addresses.
-        address[] _enumeratedAllowedSeaDrop;
+        address[] _enumeratedAllowedShibaDrop;
     }
 
     bytes32 internal constant STORAGE_SLOT =

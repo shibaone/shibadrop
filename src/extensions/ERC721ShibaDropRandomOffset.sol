@@ -40,8 +40,8 @@ contract ERC721ShibaDropRandomOffset is ERC721ShibaDrop {
     constructor(
         string memory name,
         string memory symbol,
-        address[] memory allowedSeaDrop
-    ) ERC721ShibaDrop(name, symbol, allowedSeaDrop) {}
+        address[] memory allowedShibaDrop
+    ) ERC721ShibaDrop(name, symbol, allowedShibaDrop) {}
 
     /**
      * @notice Set the random offset, for a fair metadata reveal. Only callable

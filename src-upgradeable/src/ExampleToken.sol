@@ -40,12 +40,12 @@ contract ExampleToken is ERC721ShibaDropUpgradeable {
     function initialize(
         string memory name,
         string memory symbol,
-        address[] memory allowedSeaDrop
+        address[] memory allowedShibaDrop
     ) external initializer initializerERC721A {
         ERC721ShibaDropUpgradeable.__ERC721ShibaDrop_init(
             name,
             symbol,
-            allowedSeaDrop
+            allowedShibaDrop
         );
     }
 

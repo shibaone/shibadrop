@@ -64,7 +64,7 @@ describe(`ERC721ContractMetadata (v${VERSION})`, function () {
       shibadrop.address,
       provider,
       async (impersonatedSigner) => {
-        await token.connect(impersonatedSigner).mintSeaDrop(owner.address, 2);
+        await token.connect(impersonatedSigner).mintShibaDrop(owner.address, 2);
       }
     );
     await expect(token.connect(owner).setBaseURI("http://example.com"))
@@ -175,7 +175,7 @@ describe(`ERC721ContractMetadata (v${VERSION})`, function () {
       shibadrop.address,
       provider,
       async (impersonatedSigner) => {
-        await token.connect(impersonatedSigner).mintSeaDrop(owner.address, 2);
+        await token.connect(impersonatedSigner).mintShibaDrop(owner.address, 2);
       }
     );
     expect(await token.baseURI()).to.equal("http://example.com/");

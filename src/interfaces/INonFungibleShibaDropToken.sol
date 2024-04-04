@@ -17,20 +17,21 @@ interface INonFungibleShibaDropToken is IShibaDropTokenContractMetadata {
      * @dev Revert with an error if a contract is not an allowed
      *      ShibaDrop address.
      */
-    error OnlyAllowedSeaDrop();
+    error OnlyAllowedShibaDrop();
 
     /**
      * @dev Emit an event when allowed ShibaDrop contracts are updated.
      */
-    event AllowedSeaDropUpdated(address[] allowedSeaDrop);
+    event AllowedShibaDropUpdated(address[] allowedShibaDrop);
 
     /**
      * @notice Update the allowed ShibaDrop contracts.
      *         Only the owner can use this function.
      *
-     * @param allowedSeaDrop The allowed ShibaDrop addresses.
+     * @param allowedShibaDrop The allowed ShibaDrop addresses.
      */
-    function updateAllowedSeaDrop(address[] calldata allowedSeaDrop) external;
+    function updateAllowedShibaDrop(address[] calldata allowedShibaDrop)
+        external;
 
     /**
      * @notice Mint tokens, restricted to the ShibaDrop contract.
@@ -50,7 +51,7 @@ interface INonFungibleShibaDropToken is IShibaDropTokenContractMetadata {
      * @param minter   The address to mint to.
      * @param quantity The number of tokens to mint.
      */
-    function mintSeaDrop(address minter, uint256 quantity) external;
+    function mintShibaDrop(address minter, uint256 quantity) external;
 
     /**
      * @notice Returns a set of mint stats for the address.

@@ -19,8 +19,8 @@ contract ERC721ShibaDropWithMint is ERC721ShibaDrop {
     constructor(
         string memory name,
         string memory symbol,
-        address[] memory allowedSeaDrop
-    ) ERC721ShibaDrop(name, symbol, allowedSeaDrop) {}
+        address[] memory allowedShibaDrop
+    ) ERC721ShibaDrop(name, symbol, allowedShibaDrop) {}
 
     function mint(address to, uint256 amount) public onlyOwner {
         _mint(to, amount);

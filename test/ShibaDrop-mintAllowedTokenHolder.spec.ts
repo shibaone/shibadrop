@@ -123,7 +123,7 @@ describe(`ShibaDrop - Mint Allowed Token Holder (v${VERSION})`, function () {
           { value: dropStage.mintPrice }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -187,7 +187,7 @@ describe(`ShibaDrop - Mint Allowed Token Holder (v${VERSION})`, function () {
           { value: dropStage.mintPrice }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -232,7 +232,7 @@ describe(`ShibaDrop - Mint Allowed Token Holder (v${VERSION})`, function () {
           mintParams
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
@@ -268,7 +268,7 @@ describe(`ShibaDrop - Mint Allowed Token Holder (v${VERSION})`, function () {
           { value: dropStage.mintPrice }
         )
     )
-      .to.emit(shibadrop, "SeaDropMint")
+      .to.emit(shibadrop, "ShibaDropMint")
       .withArgs(
         token.address,
         minter.address,
