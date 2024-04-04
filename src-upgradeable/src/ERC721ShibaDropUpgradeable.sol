@@ -275,42 +275,42 @@ contract ERC721ShibaDropUpgradeable is
      * @notice Update the public drop data for this nft contract on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl The allowed ShibaDrop contract.
+     * @param shibaDropImpl The allowed ShibaDrop contract.
      * @param publicDrop  The public drop data.
      */
     function updatePublicDrop(
-        address seaDropImpl,
+        address shibaDropImpl,
         PublicDrop calldata publicDrop
     ) external virtual override {
         // Ensure the sender is only the owner or contract itself.
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the public drop data on ShibaDrop.
-        IShibaDropUpgradeable(seaDropImpl).updatePublicDrop(publicDrop);
+        IShibaDropUpgradeable(shibaDropImpl).updatePublicDrop(publicDrop);
     }
 
     /**
      * @notice Update the allow list data for this nft contract on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl   The allowed ShibaDrop contract.
+     * @param shibaDropImpl   The allowed ShibaDrop contract.
      * @param allowListData The allow list data.
      */
     function updateAllowList(
-        address seaDropImpl,
+        address shibaDropImpl,
         AllowListData calldata allowListData
     ) external virtual override {
         // Ensure the sender is only the owner or contract itself.
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the allow list on ShibaDrop.
-        IShibaDropUpgradeable(seaDropImpl).updateAllowList(allowListData);
+        IShibaDropUpgradeable(shibaDropImpl).updateAllowList(allowListData);
     }
 
     /**
@@ -325,12 +325,12 @@ contract ERC721ShibaDropUpgradeable is
      *         `allowedNftToken` is not running an active drop during the
      *         `dropStage` time period.
      *
-     * @param seaDropImpl     The allowed ShibaDrop contract.
+     * @param shibaDropImpl     The allowed ShibaDrop contract.
      * @param allowedNftToken The allowed nft token.
      * @param dropStage       The token gated drop stage data.
      */
     function updateTokenGatedDrop(
-        address seaDropImpl,
+        address shibaDropImpl,
         address allowedNftToken,
         TokenGatedDropStage calldata dropStage
     ) external virtual override {
@@ -338,10 +338,10 @@ contract ERC721ShibaDropUpgradeable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the token gated drop stage.
-        IShibaDropUpgradeable(seaDropImpl).updateTokenGatedDrop(
+        IShibaDropUpgradeable(shibaDropImpl).updateTokenGatedDrop(
             allowedNftToken,
             dropStage
         );
@@ -351,10 +351,10 @@ contract ERC721ShibaDropUpgradeable is
      * @notice Update the drop URI for this nft contract on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl The allowed ShibaDrop contract.
+     * @param shibaDropImpl The allowed ShibaDrop contract.
      * @param dropURI     The new drop URI.
      */
-    function updateDropURI(address seaDropImpl, string calldata dropURI)
+    function updateDropURI(address shibaDropImpl, string calldata dropURI)
         external
         virtual
         override
@@ -363,31 +363,31 @@ contract ERC721ShibaDropUpgradeable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the drop URI.
-        IShibaDropUpgradeable(seaDropImpl).updateDropURI(dropURI);
+        IShibaDropUpgradeable(shibaDropImpl).updateDropURI(dropURI);
     }
 
     /**
      * @notice Update the creator payout address for this nft contract on ShibaDrop.
      *         Only the owner can set the creator payout address.
      *
-     * @param seaDropImpl   The allowed ShibaDrop contract.
+     * @param shibaDropImpl   The allowed ShibaDrop contract.
      * @param payoutAddress The new payout address.
      */
     function updateCreatorPayoutAddress(
-        address seaDropImpl,
+        address shibaDropImpl,
         address payoutAddress
     ) external {
         // Ensure the sender is only the owner or contract itself.
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the creator payout address.
-        IShibaDropUpgradeable(seaDropImpl).updateCreatorPayoutAddress(
+        IShibaDropUpgradeable(shibaDropImpl).updateCreatorPayoutAddress(
             payoutAddress
         );
     }
@@ -397,12 +397,12 @@ contract ERC721ShibaDropUpgradeable is
      *         on ShibaDrop.
      *         Only the owner can set the allowed fee recipient.
      *
-     * @param seaDropImpl  The allowed ShibaDrop contract.
+     * @param shibaDropImpl  The allowed ShibaDrop contract.
      * @param feeRecipient The new fee recipient.
      * @param allowed      If the fee recipient is allowed.
      */
     function updateAllowedFeeRecipient(
-        address seaDropImpl,
+        address shibaDropImpl,
         address feeRecipient,
         bool allowed
     ) external virtual {
@@ -410,10 +410,10 @@ contract ERC721ShibaDropUpgradeable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the allowed fee recipient.
-        IShibaDropUpgradeable(seaDropImpl).updateAllowedFeeRecipient(
+        IShibaDropUpgradeable(shibaDropImpl).updateAllowedFeeRecipient(
             feeRecipient,
             allowed
         );
@@ -424,13 +424,13 @@ contract ERC721ShibaDropUpgradeable is
      *         on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl                The allowed ShibaDrop contract.
+     * @param shibaDropImpl                The allowed ShibaDrop contract.
      * @param signer                     The signer to update.
      * @param signedMintValidationParams Minimum and maximum parameters to
      *                                   enforce for signed mints.
      */
     function updateSignedMintValidationParams(
-        address seaDropImpl,
+        address shibaDropImpl,
         address signer,
         SignedMintValidationParams memory signedMintValidationParams
     ) external virtual override {
@@ -438,10 +438,10 @@ contract ERC721ShibaDropUpgradeable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the signer.
-        IShibaDropUpgradeable(seaDropImpl).updateSignedMintValidationParams(
+        IShibaDropUpgradeable(shibaDropImpl).updateSignedMintValidationParams(
             signer,
             signedMintValidationParams
         );
@@ -451,12 +451,12 @@ contract ERC721ShibaDropUpgradeable is
      * @notice Update the allowed payers for this nft contract on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl The allowed ShibaDrop contract.
+     * @param shibaDropImpl The allowed ShibaDrop contract.
      * @param payer       The payer to update.
      * @param allowed     Whether the payer is allowed.
      */
     function updatePayer(
-        address seaDropImpl,
+        address shibaDropImpl,
         address payer,
         bool allowed
     ) external virtual override {
@@ -464,10 +464,10 @@ contract ERC721ShibaDropUpgradeable is
         _onlyOwnerOrSelf();
 
         // Ensure the ShibaDrop is allowed.
-        _onlyAllowedSeaDrop(seaDropImpl);
+        _onlyAllowedSeaDrop(shibaDropImpl);
 
         // Update the payer.
-        IShibaDropUpgradeable(seaDropImpl).updatePayer(payer, allowed);
+        IShibaDropUpgradeable(shibaDropImpl).updatePayer(payer, allowed);
     }
 
     /**
@@ -547,17 +547,17 @@ contract ERC721ShibaDropUpgradeable is
                 _cast(config.publicDrop.endTime != 0) ==
             1
         ) {
-            this.updatePublicDrop(config.seaDropImpl, config.publicDrop);
+            this.updatePublicDrop(config.shibaDropImpl, config.publicDrop);
         }
         if (bytes(config.dropURI).length != 0) {
-            this.updateDropURI(config.seaDropImpl, config.dropURI);
+            this.updateDropURI(config.shibaDropImpl, config.dropURI);
         }
         if (config.allowListData.merkleRoot != bytes32(0)) {
-            this.updateAllowList(config.seaDropImpl, config.allowListData);
+            this.updateAllowList(config.shibaDropImpl, config.allowListData);
         }
         if (config.creatorPayoutAddress != address(0)) {
             this.updateCreatorPayoutAddress(
-                config.seaDropImpl,
+                config.shibaDropImpl,
                 config.creatorPayoutAddress
             );
         }
@@ -567,7 +567,7 @@ contract ERC721ShibaDropUpgradeable is
         if (config.allowedFeeRecipients.length > 0) {
             for (uint256 i = 0; i < config.allowedFeeRecipients.length; ) {
                 this.updateAllowedFeeRecipient(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.allowedFeeRecipients[i],
                     true
                 );
@@ -579,7 +579,7 @@ contract ERC721ShibaDropUpgradeable is
         if (config.disallowedFeeRecipients.length > 0) {
             for (uint256 i = 0; i < config.disallowedFeeRecipients.length; ) {
                 this.updateAllowedFeeRecipient(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.disallowedFeeRecipients[i],
                     false
                 );
@@ -591,7 +591,7 @@ contract ERC721ShibaDropUpgradeable is
         if (config.allowedPayers.length > 0) {
             for (uint256 i = 0; i < config.allowedPayers.length; ) {
                 this.updatePayer(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.allowedPayers[i],
                     true
                 );
@@ -603,7 +603,7 @@ contract ERC721ShibaDropUpgradeable is
         if (config.disallowedPayers.length > 0) {
             for (uint256 i = 0; i < config.disallowedPayers.length; ) {
                 this.updatePayer(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.disallowedPayers[i],
                     false
                 );
@@ -621,7 +621,7 @@ contract ERC721ShibaDropUpgradeable is
             }
             for (uint256 i = 0; i < config.tokenGatedDropStages.length; ) {
                 this.updateTokenGatedDrop(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.tokenGatedAllowedNftTokens[i],
                     config.tokenGatedDropStages[i]
                 );
@@ -638,7 +638,7 @@ contract ERC721ShibaDropUpgradeable is
             ) {
                 TokenGatedDropStage memory emptyStage;
                 this.updateTokenGatedDrop(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.disallowedTokenGatedAllowedNftTokens[i],
                     emptyStage
                 );
@@ -660,7 +660,7 @@ contract ERC721ShibaDropUpgradeable is
 
             ) {
                 this.updateSignedMintValidationParams(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.signers[i],
                     config.signedMintValidationParams[i]
                 );
@@ -673,7 +673,7 @@ contract ERC721ShibaDropUpgradeable is
             for (uint256 i = 0; i < config.disallowedSigners.length; ) {
                 SignedMintValidationParams memory emptyParams;
                 this.updateSignedMintValidationParams(
-                    config.seaDropImpl,
+                    config.shibaDropImpl,
                     config.disallowedSigners[i],
                     emptyParams
                 );

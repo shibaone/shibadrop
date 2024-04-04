@@ -39,7 +39,7 @@ interface ERC721ShibaDropStructsErrorsAndEventsUpgradeable {
     uint256 maxSupply;
     string baseURI;
     string contractURI;
-    address seaDropImpl;
+    address shibaDropImpl;
     PublicDrop publicDrop;
     string dropURI;
     AllowListData allowListData;

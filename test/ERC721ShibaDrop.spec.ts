@@ -628,7 +628,7 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
       maxSupply: 100,
       baseURI: "https://example1.com",
       contractURI: "https://example2.com",
-      seaDropImpl: shibadrop.address,
+      shibaDropImpl: shibadrop.address,
       publicDrop,
       dropURI: "https://example3.com",
       allowListData,
@@ -753,7 +753,7 @@ describe(`ERC721ShibaDrop (v${VERSION})`, function () {
       maxSupply: 0,
       baseURI: "",
       contractURI: "",
-      seaDropImpl: shibadrop.address,
+      shibaDropImpl: shibadrop.address,
       publicDrop: {
         mintPrice: 0,
         maxTotalMintableByWallet: 0,

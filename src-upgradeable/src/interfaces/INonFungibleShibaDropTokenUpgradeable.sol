@@ -79,11 +79,11 @@ interface INonFungibleShibaDropTokenUpgradeable is
      *         ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl The allowed ShibaDrop contract.
+     * @param shibaDropImpl The allowed ShibaDrop contract.
      * @param publicDrop  The public drop data.
      */
     function updatePublicDrop(
-        address seaDropImpl,
+        address shibaDropImpl,
         PublicDrop calldata publicDrop
     ) external;
 
@@ -91,11 +91,11 @@ interface INonFungibleShibaDropTokenUpgradeable is
      * @notice Update the allow list data for this nft contract on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl   The allowed ShibaDrop contract.
+     * @param shibaDropImpl   The allowed ShibaDrop contract.
      * @param allowListData The allow list data.
      */
     function updateAllowList(
-        address seaDropImpl,
+        address shibaDropImpl,
         AllowListData calldata allowListData
     ) external;
 
@@ -112,12 +112,12 @@ interface INonFungibleShibaDropTokenUpgradeable is
      *         `dropStage` time period.
      *
      *
-     * @param seaDropImpl     The allowed ShibaDrop contract.
+     * @param shibaDropImpl     The allowed ShibaDrop contract.
      * @param allowedNftToken The allowed nft token.
      * @param dropStage       The token gated drop stage data.
      */
     function updateTokenGatedDrop(
-        address seaDropImpl,
+        address shibaDropImpl,
         address allowedNftToken,
         TokenGatedDropStage calldata dropStage
     ) external;
@@ -126,21 +126,21 @@ interface INonFungibleShibaDropTokenUpgradeable is
      * @notice Update the drop URI for this nft contract on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl The allowed ShibaDrop contract.
+     * @param shibaDropImpl The allowed ShibaDrop contract.
      * @param dropURI     The new drop URI.
      */
-    function updateDropURI(address seaDropImpl, string calldata dropURI)
+    function updateDropURI(address shibaDropImpl, string calldata dropURI)
         external;
 
     /**
      * @notice Update the creator payout address for this nft contract on ShibaDrop.
      *         Only the owner can set the creator payout address.
      *
-     * @param seaDropImpl   The allowed ShibaDrop contract.
+     * @param shibaDropImpl   The allowed ShibaDrop contract.
      * @param payoutAddress The new payout address.
      */
     function updateCreatorPayoutAddress(
-        address seaDropImpl,
+        address shibaDropImpl,
         address payoutAddress
     ) external;
 
@@ -148,11 +148,11 @@ interface INonFungibleShibaDropTokenUpgradeable is
      * @notice Update the allowed fee recipient for this nft contract
      *         on ShibaDrop.
      *
-     * @param seaDropImpl  The allowed ShibaDrop contract.
+     * @param shibaDropImpl  The allowed ShibaDrop contract.
      * @param feeRecipient The new fee recipient.
      */
     function updateAllowedFeeRecipient(
-        address seaDropImpl,
+        address shibaDropImpl,
         address feeRecipient,
         bool allowed
     ) external;
@@ -162,13 +162,13 @@ interface INonFungibleShibaDropTokenUpgradeable is
      *         on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl                The allowed ShibaDrop contract.
+     * @param shibaDropImpl                The allowed ShibaDrop contract.
      * @param signer                     The signer to update.
      * @param signedMintValidationParams Minimum and maximum parameters
      *                                   to enforce for signed mints.
      */
     function updateSignedMintValidationParams(
-        address seaDropImpl,
+        address shibaDropImpl,
         address signer,
         SignedMintValidationParams memory signedMintValidationParams
     ) external;
@@ -177,12 +177,12 @@ interface INonFungibleShibaDropTokenUpgradeable is
      * @notice Update the allowed payers for this nft contract on ShibaDrop.
      *         Only the owner can use this function.
      *
-     * @param seaDropImpl The allowed ShibaDrop contract.
+     * @param shibaDropImpl The allowed ShibaDrop contract.
      * @param payer       The payer to update.
      * @param allowed     Whether the payer is allowed.
      */
     function updatePayer(
-        address seaDropImpl,
+        address shibaDropImpl,
         address payer,
         bool allowed
     ) external;
