@@ -1,8 +1,8 @@
 {
-  "mainnet": {
-    "ShibaDrop": {
-      "address": "0x00005EA00Ac477B1030CE78506496e8C2dE24bf5",
-      "startBlock": 15527904
+  "sepolia": {
+    "ERC721ShibaDropCloneFactory": {
+      "address": "0xBAD02aDd4B8a4AD3D7a2B60c98FAAd5167903121",
+      "startBlock": 5652935
     }
   }
 }

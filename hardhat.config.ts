@@ -48,6 +48,10 @@ const config: HardhatUserConfig = {
       blockGasLimit: 30_000_000,
       throwOnCallFailures: false,
     },
+    mumbai: {
+      url: process.env.SEPOLIA_RPC_URL,
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
+    },
     verificationNetwork: {
       url: process.env.NETWORK_RPC ?? "",
     },
