@@ -1,0 +1,50 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ShibaDrop
+    network: sepolia
+    source:
+      address: "0x4a5E9F41d59DbEb6CA907A148203B13a5Ce12a85"
+      abi: ShibaDrop
+      startBlock: 5652853
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AllowListUpdated
+        - AllowedFeeRecipientUpdated
+        - CreatorPayoutAddressUpdated
+        - DropURIUpdated
+        - PayerUpdated
+        - PublicDropUpdated
+        - ShibaDropMint
+        - SignedMintValidationParamsUpdated
+        - TokenGatedDropStageUpdated
+      abis:
+        - name: ShibaDrop
+          file: ./abis/ShibaDrop.json
+      eventHandlers:
+        - event: AllowListUpdated(indexed address,indexed bytes32,indexed bytes32,string[],string)
+          handler: handleAllowListUpdated
+        - event: AllowedFeeRecipientUpdated(indexed address,indexed address,indexed bool)
+          handler: handleAllowedFeeRecipientUpdated
+        - event: CreatorPayoutAddressUpdated(indexed address,indexed address)
+          handler: handleCreatorPayoutAddressUpdated
+        - event: DropURIUpdated(indexed address,string)
+          handler: handleDropURIUpdated
+        - event: PayerUpdated(indexed address,indexed address,indexed bool)
+          handler: handlePayerUpdated
+        - event: PublicDropUpdated(indexed address,(uint80,uint48,uint48,uint16,uint16,bool))
+          handler: handlePublicDropUpdated
+        - event: ShibaDropMint(indexed address,indexed address,indexed address,address,uint256,uint256,uint256,uint256)
+          handler: handleShibaDropMint
+        - event: SignedMintValidationParamsUpdated(indexed address,indexed address,(uint80,uint24,uint40,uint40,uint40,uint16,uint16))
+          handler: handleSignedMintValidationParamsUpdated
+        - event: TokenGatedDropStageUpdated(indexed address,indexed address,(uint80,uint16,uint48,uint48,uint8,uint32,uint16,bool))
+          handler: handleTokenGatedDropStageUpdated
+      file: ./src/shiba-drop.ts
