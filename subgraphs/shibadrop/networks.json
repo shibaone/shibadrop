@@ -1,0 +1,8 @@
+{
+  "mainnet": {
+    "ShibaDrop": {
+      "address": "0x00005EA00Ac477B1030CE78506496e8C2dE24bf5",
+      "startBlock": 15527904
+    }
+  }
+}

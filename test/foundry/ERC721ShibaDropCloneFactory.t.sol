@@ -36,10 +36,10 @@ contract ERC721ShibaDropCloneFactoryTest is Test {
         assertEq(token.symbol(), "symbol", "symbol should be set");
         assertEq(token.owner(), address(this), "owner should be set");
         token.updateCreatorPayoutAddress(
-            factory.DEFAULT_SEADROP(),
+            factory.DEFAULT_SHIBADROP(),
             address(1234)
         );
-        ShibaDrop seaDrop = ShibaDrop(factory.DEFAULT_SEADROP());
+        ShibaDrop seaDrop = ShibaDrop(factory.DEFAULT_SHIBADROP());
         assertEq(
             seaDrop.getCreatorPayoutAddress(address(token)),
             address(1234)
@@ -48,7 +48,7 @@ contract ERC721ShibaDropCloneFactoryTest is Test {
         assertEq(token.totalSupply(), 0);
 
         token.updatePublicDrop(
-            factory.DEFAULT_SEADROP(),
+            factory.DEFAULT_SHIBADROP(),
             PublicDrop({
                 mintPrice: 1 ether,
                 startTime: uint48(block.timestamp),
