@@ -3,7 +3,7 @@ import { NewInstance } from "../generated/schema"
 
 export function handleNewInstance(event: NewInstanceEvent): void {
   let entity = new NewInstance(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
+    event.transaction.hash.concatI32(event.logIndex.toI32()),
   )
   entity.instance = event.params.instance
 
