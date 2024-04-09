@@ -109,12 +109,3 @@ type TokenGatedDropStageUpdated @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
-type NewInstance @entity(immutable: true) {
-  id: Bytes!
-  instance: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-  name: String!
-  symbol: String!
-}

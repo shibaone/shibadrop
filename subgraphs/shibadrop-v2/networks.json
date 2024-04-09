@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "ShibaDrop": {
+      "address": "0x4a5E9F41d59DbEb6CA907A148203B13a5Ce12a85",
+      "startBlock": 5652853
+    }
+  }
+}
