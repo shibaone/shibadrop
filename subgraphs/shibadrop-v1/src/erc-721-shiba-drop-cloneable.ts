@@ -15,23 +15,23 @@ import {
   Transfer as TransferEvent,
   TransferValidatorUpdated as TransferValidatorUpdatedEvent,
 } from "../generated/templates/ERC721ShibaDropCloneable/ERC721ShibaDropCloneable";
-import {
-  AllowedShibaDropUpdated,
-  Approval,
-  ApprovalForAll,
-  BatchMetadataUpdate,
-  ConsecutiveTransfer,
-  ContractURIUpdated,
-  Initialized,
-  MaxSupplyUpdated,
-  OwnershipTransferred,
-  PotentialOwnerUpdated,
-  ProvenanceHashUpdated,
-  RoyaltyInfoUpdated,
-  ShibaDropTokenDeployed,
-  Transfer,
-  TransferValidatorUpdated,
-} from "../generated/schema";
+// import {
+//   AllowedShibaDropUpdated,
+//   Approval,
+//   ApprovalForAll,
+//   BatchMetadataUpdate,
+//   ConsecutiveTransfer,
+//   ContractURIUpdated,
+//   Initialized,
+//   MaxSupplyUpdated,
+//   OwnershipTransferred,
+//   PotentialOwnerUpdated,
+//   ProvenanceHashUpdated,
+//   RoyaltyInfoUpdated,
+//   ShibaDropTokenDeployed,
+//   Transfer,
+//   TransferValidatorUpdated,
+// } from "../generated/schema";
 
 export function handleAllowedShibaDropUpdated(
   event: AllowedShibaDropUpdatedEvent
