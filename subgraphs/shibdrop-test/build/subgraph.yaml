@@ -71,3 +71,65 @@ dataSources:
         - event: NewInstance(address)
           handler: handleNewInstance
       file: ERC721ShibaDropCloneFactory/ERC721ShibaDropCloneFactory.wasm
+  - kind: ethereum
+    name: ERC721ShibaDropCloneable
+    network: sepolia
+    source:
+      address: "0x4a5E9F41d59DbEb6CA907A148203B13a5Ce12a85"
+      abi: ERC721ShibaDropCloneable
+      startBlock: 5652853
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AllowedShibaDropUpdated
+        - Approval
+        - ApprovalForAll
+        - BatchMetadataUpdate
+        - ConsecutiveTransfer
+        - ContractURIUpdated
+        - Initialized
+        - MaxSupplyUpdated
+        - OwnershipTransferred
+        - PotentialOwnerUpdated
+        - ProvenanceHashUpdated
+        - RoyaltyInfoUpdated
+        - ShibaDropTokenDeployed
+        - Transfer
+        - TransferValidatorUpdated
+      abis:
+        - name: ERC721ShibaDropCloneable
+          file: ERC721ShibaDropCloneable/abis/ERC721ShibaDropCloneable.json
+      eventHandlers:
+        - event: AllowedShibaDropUpdated(address[])
+          handler: handleAllowedShibaDropUpdated
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BatchMetadataUpdate(uint256,uint256)
+          handler: handleBatchMetadataUpdate
+        - event: ConsecutiveTransfer(indexed uint256,uint256,indexed address,indexed address)
+          handler: handleConsecutiveTransfer
+        - event: ContractURIUpdated(string)
+          handler: handleContractURIUpdated
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MaxSupplyUpdated(uint256)
+          handler: handleMaxSupplyUpdated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PotentialOwnerUpdated(address)
+          handler: handlePotentialOwnerUpdated
+        - event: ProvenanceHashUpdated(bytes32,bytes32)
+          handler: handleProvenanceHashUpdated
+        - event: RoyaltyInfoUpdated(address,uint256)
+          handler: handleRoyaltyInfoUpdated
+        - event: ShibaDropTokenDeployed()
+          handler: handleShibaDropTokenDeployed
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: TransferValidatorUpdated(address,address)
+          handler: handleTransferValidatorUpdated
+      file: ERC721ShibaDropCloneable/ERC721ShibaDropCloneable.wasm
