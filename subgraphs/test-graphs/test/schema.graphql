@@ -1,0 +1,7 @@
+type NewInstance @entity(immutable: true) {
+  id: Bytes!
+  instance: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
