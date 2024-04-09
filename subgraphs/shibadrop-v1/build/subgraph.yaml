@@ -1,0 +1,122 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ShibaDrop
+    network: sepolia
+    source:
+      address: "0x4a5E9F41d59DbEb6CA907A148203B13a5Ce12a85"
+      abi: ShibaDrop
+      startBlock: 5652853
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AllowListUpdated
+        - AllowedFeeRecipientUpdated
+        - CreatorPayoutAddressUpdated
+        - DropURIUpdated
+        - PayerUpdated
+        - PublicDropUpdated
+        - ShibaDropMint
+        - SignedMintValidationParamsUpdated
+        - TokenGatedDropStageUpdated
+      abis:
+        - name: ShibaDrop
+          file: ShibaDrop/abis/ShibaDrop.json
+      eventHandlers:
+        - event: AllowListUpdated(indexed address,indexed bytes32,indexed bytes32,string[],string)
+          handler: handleAllowListUpdated
+        - event: AllowedFeeRecipientUpdated(indexed address,indexed address,indexed bool)
+          handler: handleAllowedFeeRecipientUpdated
+        - event: CreatorPayoutAddressUpdated(indexed address,indexed address)
+          handler: handleCreatorPayoutAddressUpdated
+        - event: DropURIUpdated(indexed address,string)
+          handler: handleDropURIUpdated
+        - event: PayerUpdated(indexed address,indexed address,indexed bool)
+          handler: handlePayerUpdated
+        - event: PublicDropUpdated(indexed address,(uint80,uint48,uint48,uint16,uint16,bool))
+          handler: handlePublicDropUpdated
+        - event: ShibaDropMint(indexed address,indexed address,indexed
+            address,address,uint256,uint256,uint256,uint256)
+          handler: handleShibaDropMint
+        - event: SignedMintValidationParamsUpdated(indexed address,indexed
+            address,(uint80,uint24,uint40,uint40,uint40,uint16,uint16))
+          handler: handleSignedMintValidationParamsUpdated
+        - event: TokenGatedDropStageUpdated(indexed address,indexed
+            address,(uint80,uint16,uint48,uint48,uint8,uint32,uint16,bool))
+          handler: handleTokenGatedDropStageUpdated
+      file: ShibaDrop/ShibaDrop.wasm
+  - kind: ethereum
+    name: ERC721ShibaDropCloneFactory
+    network: sepolia
+    source:
+      address: "0xBAD02aDd4B8a4AD3D7a2B60c98FAAd5167903121"
+      abi: ERC721ShibaDropCloneFactory
+      startBlock: 5652935
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: ERC721ShibaDropCloneFactory/ERC721ShibaDropCloneFactory.wasm
+      entities:
+        - NewInstance
+      abis:
+        - name: ERC721ShibaDropCloneFactory
+          file: ERC721ShibaDropCloneFactory/abis/ERC721ShibaDropCloneFactory.json
+        - name: ERC721ShibaDropCloneable
+          file: ERC721ShibaDropCloneFactory/abis/ERC721ShibaDropCloneable.json
+      eventHandlers:
+        - event: NewInstance(address)
+          handler: handleNewInstance
+templates:
+  - kind: ethereum/contract
+    name: ERC721ShibaDropCloneable
+    network: sepolia
+    source:
+      abi: ERC721ShibaDropCloneable
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      file: templates/ERC721ShibaDropCloneable/ERC721ShibaDropCloneable.wasm
+      entities:
+        - ERC721ShibaDropCloneFactory
+      abis:
+        - name: ERC721ShibaDropCloneable
+          file: ERC721ShibaDropCloneable/abis/ERC721ShibaDropCloneable.json
+      eventHandlers:
+        - event: AllowedShibaDropUpdated(address[])
+          handler: handleAllowedShibaDropUpdated
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BatchMetadataUpdate(uint256,uint256)
+          handler: handleBatchMetadataUpdate
+        - event: ConsecutiveTransfer(indexed uint256,uint256,indexed address,indexed address)
+          handler: handleConsecutiveTransfer
+        - event: ContractURIUpdated(string)
+          handler: handleContractURIUpdated
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MaxSupplyUpdated(uint256)
+          handler: handleMaxSupplyUpdated
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PotentialOwnerUpdated(address)
+          handler: handlePotentialOwnerUpdated
+        - event: ProvenanceHashUpdated(bytes32,bytes32)
+          handler: handleProvenanceHashUpdated
+        - event: RoyaltyInfoUpdated(address,uint256)
+          handler: handleRoyaltyInfoUpdated
+        - event: ShibaDropTokenDeployed()
+          handler: handleShibaDropTokenDeployed
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+        - event: TransferValidatorUpdated(address,address)
+          handler: handleTransferValidatorUpdated
