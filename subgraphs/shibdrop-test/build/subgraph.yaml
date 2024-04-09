@@ -2,7 +2,7 @@ specVersion: 1.0.0
 indexerHints:
   prune: auto
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: ShibaDrop
@@ -27,7 +27,7 @@ dataSources:
         - TokenGatedDropStageUpdated
       abis:
         - name: ShibaDrop
-          file: ./abis/ShibaDrop.json
+          file: ShibaDrop/abis/ShibaDrop.json
       eventHandlers:
         - event: AllowListUpdated(indexed address,indexed bytes32,indexed bytes32,string[],string)
           handler: handleAllowListUpdated
@@ -50,7 +50,7 @@ dataSources:
         - event: TokenGatedDropStageUpdated(indexed address,indexed
             address,(uint80,uint16,uint48,uint48,uint8,uint32,uint16,bool))
           handler: handleTokenGatedDropStageUpdated
-      file: ./src/shiba-drop.ts
+      file: ShibaDrop/ShibaDrop.wasm
   - kind: ethereum
     name: ERC721ShibaDropCloneFactory
     network: sepolia
@@ -66,8 +66,8 @@ dataSources:
         - NewInstance
       abis:
         - name: ERC721ShibaDropCloneFactory
-          file: ./abis/ERC721ShibaDropCloneFactory.json
+          file: ERC721ShibaDropCloneFactory/abis/ERC721ShibaDropCloneFactory.json
       eventHandlers:
         - event: NewInstance(address)
           handler: handleNewInstance
-      file: ./src/erc-721-shiba-drop-clone-factory.ts
+      file: ERC721ShibaDropCloneFactory/ERC721ShibaDropCloneFactory.wasm
