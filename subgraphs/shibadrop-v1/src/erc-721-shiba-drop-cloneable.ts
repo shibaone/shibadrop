@@ -14,7 +14,7 @@ import {
   ShibaDropTokenDeployed as ShibaDropTokenDeployedEvent,
   Transfer as TransferEvent,
   TransferValidatorUpdated as TransferValidatorUpdatedEvent,
-} from "../generated/ERC721ShibaDropCloneable/ERC721ShibaDropCloneable";
+} from "../generated/templates/ERC721ShibaDropCloneable/ERC721ShibaDropCloneable";
 import {
   AllowedShibaDropUpdated,
   Approval,

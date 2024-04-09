@@ -62,17 +62,20 @@ dataSources:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
+      file: ./src/erc-721-shiba-drop-clone-factory.ts
       entities:
         - NewInstance
       abis:
         - name: ERC721ShibaDropCloneFactory
           file: ./abis/ERC721ShibaDropCloneFactory.json
+        - name: ERC721ShibaDropCloneable
+          file: ./abis/ERC721ShibaDropCloneable.json
       eventHandlers:
         - event: NewInstance(address)
           handler: handleNewInstance
-      file: ./src/erc-721-shiba-drop-clone-factory.ts
 templates:
-  - name: ERC721ShibaDropCloneable
+  - kind: ethereum/contract
+    name: ERC721ShibaDropCloneable
     network: sepolia
     source:
       abi: ERC721ShibaDropCloneable
@@ -80,6 +83,7 @@ templates:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
+      file: ./src/erc-721-shiba-drop-cloneable.ts
       entities:
         - AllowedShibaDropUpdated
         - Approval
@@ -130,4 +134,3 @@ templates:
           handler: handleTransfer
         - event: TransferValidatorUpdated(address,address)
           handler: handleTransferValidatorUpdated
-      file: ./src/erc-721-shiba-drop-cloneable.ts
