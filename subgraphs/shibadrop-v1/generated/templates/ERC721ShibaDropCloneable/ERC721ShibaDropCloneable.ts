@@ -23,8 +23,8 @@ export class AllowedShibaDropUpdated__Params {
     this._event = event;
   }
 
-  get allowedShibaDrop(): Array<Bytes> {
-    return this._event.parameters[0].value.toBytesArray();
+  get allowedShibaDrop(): Array<Address> {
+    return this._event.parameters[0].value.toAddressArray();
   }
 }
 

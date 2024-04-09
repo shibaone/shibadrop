@@ -85,7 +85,21 @@ templates:
       language: wasm/assemblyscript
       file: ./src/erc-721-shiba-drop-cloneable.ts
       entities:
-        - ERC721ShibaDropCloneFactory
+        - AllowedShibaDropUpdated
+        - Approval
+        - ApprovalForAll
+        - BatchMetadataUpdate
+        - ConsecutiveTransfer
+        - ContractURIUpdated
+        - Initialized
+        - MaxSupplyUpdated
+        - OwnershipTransferred
+        - PotentialOwnerUpdated
+        - ProvenanceHashUpdated
+        - RoyaltyInfoUpdated
+        - ShibaDropTokenDeployed
+        - Transfer
+        - TransferValidatorUpdated
       abis:
         - name: ERC721ShibaDropCloneable
           file: ./abis/ERC721ShibaDropCloneable.json

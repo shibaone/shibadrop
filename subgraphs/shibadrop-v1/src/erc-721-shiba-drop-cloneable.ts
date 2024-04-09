@@ -33,6 +33,7 @@ import {
   Transfer,
   TransferValidatorUpdated,
 } from "../generated/schema";
+import { Bytes } from "@graphprotocol/graph-ts";
 
 export function handleAllowedShibaDropUpdated(
   event: AllowedShibaDropUpdatedEvent
@@ -40,7 +41,7 @@ export function handleAllowedShibaDropUpdated(
   let entity = new AllowedShibaDropUpdated(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   );
-  entity.allowedShibaDrop = event.params.allowedShibaDrop;
+  entity.allowedShibaDrop = changetype<Bytes[]>(event.params.allowedShibaDrop);
   entity.blockNumber = event.block.number;
   entity.blockTimestamp = event.block.timestamp;
   entity.transactionHash = event.transaction.hash;
