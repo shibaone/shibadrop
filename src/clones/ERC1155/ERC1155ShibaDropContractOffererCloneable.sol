@@ -46,7 +46,7 @@ import {
  * @author Stephan Min (stephanm.eth)
  * @author Michael Cohen (notmichael.eth)
  * @notice A cloneable ERC1155 token contract that can mint as a
- *         Seaport contract offerer.
+ *         Shibaport contract offerer.
  */
 contract ERC1155ShibaDropContractOffererCloneable is
     ERC1155ContractMetadataCloneable,
@@ -60,7 +60,7 @@ contract ERC1155ShibaDropContractOffererCloneable is
      * @param allowedConfigurer The address of the contract allowed to
      *                          configure parameters. Also contains SeaDrop
      *                          implementation code.
-     * @param allowedShibaport    The address of the Seaport contract allowed to
+     * @param allowedShibaport    The address of the Shibaport contract allowed to
      *                          interact.
      * @param name_             The name of the token.
      * @param symbol_           The symbol of the token.
@@ -71,23 +71,23 @@ contract ERC1155ShibaDropContractOffererCloneable is
         string memory name_,
         string memory symbol_
     ) internal onlyInitializing {
-        // Set the allowed Seaport to interact with this contract.
+        // Set the allowed Shibaport to interact with this contract.
         if (allowedShibaport == address(0)) {
             revert AllowedSeaportCannotBeZeroAddress();
         }
-        ERC1155ShibaDropContractOffererStorage.layout()._allowedSeaport[
-            allowedShibaport
-        ] = true;
+        ERC1155ShibaDropContractOffererStorage.layout()._allowedShibaport[
+                allowedShibaport
+            ] = true;
 
-        // Set the allowed Seaport enumeration.
+        // Set the allowed Shibaport enumeration.
         address[] memory enumeratedAllowedSeaport = new address[](1);
         enumeratedAllowedSeaport[0] = allowedShibaport;
         ERC1155ShibaDropContractOffererStorage
             .layout()
-            ._enumeratedAllowedSeaport = enumeratedAllowedSeaport;
+            ._enumeratedAllowedShibaport = enumeratedAllowedSeaport;
 
         // Emit an event noting the contract deployment.
-        emit SeaDropTokenDeployed(SEADROP_TOKEN_TYPE.ERC1155_CLONE);
+        emit ShibaDropTokenDeployed(SEADROP_TOKEN_TYPE.ERC1155_CLONE);
 
         // Initialize ERC1155ContractMetadataCloneable.
         __ERC1155ContractMetadataCloneable_init(
@@ -262,7 +262,7 @@ contract ERC1155ShibaDropContractOffererCloneable is
 
     /**
      * @dev Handle ERC-1155 safeTransferFrom. If "from" is this contract,
-     *      the sender can only be Seaport or the conduit.
+     *      the sender can only be Shibaport or the conduit.
      *
      * @param from   The address to transfer from.
      * @param to     The address to transfer to.
@@ -278,13 +278,13 @@ contract ERC1155ShibaDropContractOffererCloneable is
         bytes calldata data
     ) public virtual override {
         if (from == address(this)) {
-            // Only Seaport or the conduit can use this function
+            // Only Shibaport or the conduit can use this function
             // when "from" is this contract.
             if (
                 msg.sender != _CONDUIT &&
                 !ERC1155ShibaDropContractOffererStorage
                     .layout()
-                    ._allowedSeaport[msg.sender]
+                    ._allowedShibaport[msg.sender]
             ) {
                 revert InvalidCallerOnlyAllowedSeaport(msg.sender);
             }
@@ -319,7 +319,7 @@ contract ERC1155ShibaDropContractOffererCloneable is
 
     /**
      * @dev Internal function to mint tokens during a generateOrder call
-     *      from Seaport.
+     *      from Shibaport.
      *
      * @param data The original transaction calldata, without the selector.
      */

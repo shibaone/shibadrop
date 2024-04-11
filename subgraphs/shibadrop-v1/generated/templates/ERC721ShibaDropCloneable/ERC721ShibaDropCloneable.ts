@@ -480,7 +480,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.tryCall(
       "getApproved",
       "getApproved(uint256):(address)",
-      [ethereum.Value.fromUnsignedBigInt(tokenId)]
+      [ethereum.Value.fromUnsignedBigInt(tokenId)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -493,23 +493,23 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.call(
       "getMintStats",
       "getMintStats(address):(uint256,uint256,uint256)",
-      [ethereum.Value.fromAddress(minter)]
+      [ethereum.Value.fromAddress(minter)],
     );
 
     return new ERC721ShibaDropCloneable__getMintStatsResult(
       result[0].toBigInt(),
       result[1].toBigInt(),
-      result[2].toBigInt()
+      result[2].toBigInt(),
     );
   }
 
   try_getMintStats(
-    minter: Address
+    minter: Address,
   ): ethereum.CallResult<ERC721ShibaDropCloneable__getMintStatsResult> {
     let result = super.tryCall(
       "getMintStats",
       "getMintStats(address):(uint256,uint256,uint256)",
-      [ethereum.Value.fromAddress(minter)]
+      [ethereum.Value.fromAddress(minter)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -519,8 +519,8 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
       new ERC721ShibaDropCloneable__getMintStatsResult(
         value[0].toBigInt(),
         value[1].toBigInt(),
-        value[2].toBigInt()
-      )
+        value[2].toBigInt(),
+      ),
     );
   }
 
@@ -528,12 +528,12 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.call(
       "getTransferValidationFunction",
       "getTransferValidationFunction():(bytes4,bool)",
-      []
+      [],
     );
 
     return new ERC721ShibaDropCloneable__getTransferValidationFunctionResult(
       result[0].toBytes(),
-      result[1].toBoolean()
+      result[1].toBoolean(),
     );
   }
 
@@ -541,7 +541,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTransferValidationFunction",
       "getTransferValidationFunction():(bytes4,bool)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -550,8 +550,8 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(
       new ERC721ShibaDropCloneable__getTransferValidationFunctionResult(
         value[0].toBytes(),
-        value[1].toBoolean()
-      )
+        value[1].toBoolean(),
+      ),
     );
   }
 
@@ -559,7 +559,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.call(
       "getTransferValidator",
       "getTransferValidator():(address)",
-      []
+      [],
     );
 
     return result[0].toAddress();
@@ -569,7 +569,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.tryCall(
       "getTransferValidator",
       "getTransferValidator():(address)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -582,7 +582,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.call(
       "isApprovedForAll",
       "isApprovedForAll(address,address):(bool)",
-      [ethereum.Value.fromAddress(owner), ethereum.Value.fromAddress(operator)]
+      [ethereum.Value.fromAddress(owner), ethereum.Value.fromAddress(operator)],
     );
 
     return result[0].toBoolean();
@@ -590,12 +590,12 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
 
   try_isApprovedForAll(
     owner: Address,
-    operator: Address
+    operator: Address,
   ): ethereum.CallResult<boolean> {
     let result = super.tryCall(
       "isApprovedForAll",
       "isApprovedForAll(address,address):(bool)",
-      [ethereum.Value.fromAddress(owner), ethereum.Value.fromAddress(operator)]
+      [ethereum.Value.fromAddress(owner), ethereum.Value.fromAddress(operator)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -678,7 +678,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.tryCall(
       "provenanceHash",
       "provenanceHash():(bytes32)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -697,7 +697,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.tryCall(
       "royaltyAddress",
       "royaltyAddress():(address)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -710,7 +710,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.call(
       "royaltyBasisPoints",
       "royaltyBasisPoints():(uint256)",
-      []
+      [],
     );
 
     return result[0].toBigInt();
@@ -720,7 +720,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.tryCall(
       "royaltyBasisPoints",
       "royaltyBasisPoints():(uint256)",
-      []
+      [],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -731,7 +731,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
 
   royaltyInfo(
     param0: BigInt,
-    _salePrice: BigInt
+    _salePrice: BigInt,
   ): ERC721ShibaDropCloneable__royaltyInfoResult {
     let result = super.call(
       "royaltyInfo",
@@ -739,18 +739,18 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
       [
         ethereum.Value.fromUnsignedBigInt(param0),
         ethereum.Value.fromUnsignedBigInt(_salePrice),
-      ]
+      ],
     );
 
     return new ERC721ShibaDropCloneable__royaltyInfoResult(
       result[0].toAddress(),
-      result[1].toBigInt()
+      result[1].toBigInt(),
     );
   }
 
   try_royaltyInfo(
     param0: BigInt,
-    _salePrice: BigInt
+    _salePrice: BigInt,
   ): ethereum.CallResult<ERC721ShibaDropCloneable__royaltyInfoResult> {
     let result = super.tryCall(
       "royaltyInfo",
@@ -758,7 +758,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
       [
         ethereum.Value.fromUnsignedBigInt(param0),
         ethereum.Value.fromUnsignedBigInt(_salePrice),
-      ]
+      ],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -767,8 +767,8 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     return ethereum.CallResult.fromValue(
       new ERC721ShibaDropCloneable__royaltyInfoResult(
         value[0].toAddress(),
-        value[1].toBigInt()
-      )
+        value[1].toBigInt(),
+      ),
     );
   }
 
@@ -776,7 +776,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.call(
       "supportsInterface",
       "supportsInterface(bytes4):(bool)",
-      [ethereum.Value.fromFixedBytes(interfaceId)]
+      [ethereum.Value.fromFixedBytes(interfaceId)],
     );
 
     return result[0].toBoolean();
@@ -786,7 +786,7 @@ export class ERC721ShibaDropCloneable extends ethereum.SmartContract {
     let result = super.tryCall(
       "supportsInterface",
       "supportsInterface(bytes4):(bool)",
-      [ethereum.Value.fromFixedBytes(interfaceId)]
+      [ethereum.Value.fromFixedBytes(interfaceId)],
     );
     if (result.reverted) {
       return new ethereum.CallResult();
@@ -1090,7 +1090,7 @@ export class MultiConfigureCall__Inputs {
 
   get config(): MultiConfigureCallConfigStruct {
     return changetype<MultiConfigureCallConfigStruct>(
-      this._call.inputValues[0].value.toTuple()
+      this._call.inputValues[0].value.toTuple(),
     );
   }
 }
@@ -1122,7 +1122,7 @@ export class MultiConfigureCallConfigStruct extends ethereum.Tuple {
 
   get publicDrop(): MultiConfigureCallConfigPublicDropStruct {
     return changetype<MultiConfigureCallConfigPublicDropStruct>(
-      this[4].toTuple()
+      this[4].toTuple(),
     );
   }
 
@@ -1132,7 +1132,7 @@ export class MultiConfigureCallConfigStruct extends ethereum.Tuple {
 
   get allowListData(): MultiConfigureCallConfigAllowListDataStruct {
     return changetype<MultiConfigureCallConfigAllowListDataStruct>(
-      this[6].toTuple()
+      this[6].toTuple(),
     );
   }
 
@@ -1568,7 +1568,7 @@ export class SetRoyaltyInfoCall__Inputs {
 
   get newInfo(): SetRoyaltyInfoCallNewInfoStruct {
     return changetype<SetRoyaltyInfoCallNewInfoStruct>(
-      this._call.inputValues[0].value.toTuple()
+      this._call.inputValues[0].value.toTuple(),
     );
   }
 }
@@ -1712,7 +1712,7 @@ export class UpdateAllowListCall__Inputs {
 
   get allowListData(): UpdateAllowListCallAllowListDataStruct {
     return changetype<UpdateAllowListCallAllowListDataStruct>(
-      this._call.inputValues[1].value.toTuple()
+      this._call.inputValues[1].value.toTuple(),
     );
   }
 }
@@ -1936,7 +1936,7 @@ export class UpdatePublicDropCall__Inputs {
 
   get publicDrop(): UpdatePublicDropCallPublicDropStruct {
     return changetype<UpdatePublicDropCallPublicDropStruct>(
-      this._call.inputValues[1].value.toTuple()
+      this._call.inputValues[1].value.toTuple(),
     );
   }
 }
@@ -2002,7 +2002,7 @@ export class UpdateSignedMintValidationParamsCall__Inputs {
 
   get signedMintValidationParams(): UpdateSignedMintValidationParamsCallSignedMintValidationParamsStruct {
     return changetype<UpdateSignedMintValidationParamsCallSignedMintValidationParamsStruct>(
-      this._call.inputValues[2].value.toTuple()
+      this._call.inputValues[2].value.toTuple(),
     );
   }
 }
@@ -2072,7 +2072,7 @@ export class UpdateTokenGatedDropCall__Inputs {
 
   get dropStage(): UpdateTokenGatedDropCallDropStageStruct {
     return changetype<UpdateTokenGatedDropCallDropStageStruct>(
-      this._call.inputValues[2].value.toTuple()
+      this._call.inputValues[2].value.toTuple(),
     );
   }
 }

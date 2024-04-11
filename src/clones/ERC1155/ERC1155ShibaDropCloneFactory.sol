@@ -16,12 +16,14 @@ import { Clones } from "@openzeppelin/contracts/proxy/Clones.sol";
  * @author Stephan Min (stephanm.eth)
  * @author Michael Cohen (notmichael.eth)
  * @notice A factory contract that deploys ERC1155 token contracts
- *         that can mint as Seaport contract offerers.
+ *         that can mint as Shibaport contract offerers.
  */
 contract ERC1155ShibaDropCloneFactory {
-    address public immutable shibaport;
+    address public immutable shibaport; // Initially an EOA and later on it will be replaced by the address of `Shibaport`
     address public immutable configurer;
     address public immutable cloneableImplementation;
+
+    event NewInstance1155(address indexed instance, address indexed creator);
 
     constructor(address allowedShibaport) {
         shibaport = allowedShibaport;
@@ -56,5 +58,7 @@ contract ERC1155ShibaDropCloneFactory {
             symbol,
             msg.sender
         );
+        emit NewInstance1155(instance, msg.sender);
+        return instance;
     }
 }

@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "ERC1155ShibaDropCloneFactory": {
+      "address": "0x3dc194401E559aEfE6bfA89E66Cb5756C85A89dE",
+      "startBlock": 5675029
+    }
+  }
+}

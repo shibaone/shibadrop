@@ -13,7 +13,7 @@ import {
  * @author Michael Cohen (notmichael.eth)
  * @custom:contributor Limit Break (@limitbreak)
  * @notice A cloneable ERC1155 token contract that can mint as a
- *         Seaport contract offerer.
+ *         Shibaport contract offerer.
  *         Implements Limit Break's Creator Token Standards transfer
  *         validation for royalty enforcement.
  */
@@ -24,7 +24,7 @@ contract ERC1155ShibaDropCloneable is ERC1155ShibaDropContractOffererCloneable {
      * @param allowedConfigurer The address of the contract allowed to
      *                          implementation code. Also contains SeaDrop
      *                          implementation code.
-     * @param allowedShibaport    The address of the Seaport contract allowed to
+     * @param allowedShibaport    The address of the Shibaport contract allowed to
      *                          interact.
      * @param name_             The name of the token.
      * @param symbol_           The symbol of the token.

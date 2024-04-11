@@ -17,10 +17,10 @@ import {
  */
 interface IShibaDropToken is IShibaDrop1155TokenContractMetadata {
     /**
-     * @notice Update the SeaDrop allowed Seaport contracts privileged to mint.
+     * @notice Update the SeaDrop allowed Shibaport contracts privileged to mint.
      *         Only the owner can use this function.
      *
-     * @param allowedShibaport The allowed Seaport addresses.
+     * @param allowedShibaport The allowed Shibaport addresses.
      */
     function updateAllowedSeaport(address[] calldata allowedShibaport) external;
 
@@ -80,7 +80,7 @@ interface IShibaDropToken is IShibaDrop1155TokenContractMetadata {
     function updateSigner(address signer, bool allowed) external;
 
     /**
-     * @notice Get the SeaDrop allowed Seaport contracts privileged to mint.
+     * @notice Get the SeaDrop allowed Shibaport contracts privileged to mint.
      */
     function getAllowedSeaport() external view returns (address[] memory);
 

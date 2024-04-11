@@ -162,12 +162,12 @@ contract ERC1155ShibaDropContractOffererImplementation is
                         ._enumeratedPublicDropIndexes
                 );
         } else if (selector == IShibaDropToken.getAllowedSeaport.selector) {
-            // Return the allowed Seaport.
+            // Return the allowed Shibaport.
             return
                 abi.encode(
                     ERC1155ShibaDropContractOffererStorage
                         .layout()
-                        ._enumeratedAllowedSeaport
+                        ._enumeratedAllowedShibaport
                 );
         } else if (selector == IShibaDropToken.getCreatorPayouts.selector) {
             // Return the creator payouts.
@@ -237,7 +237,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
         pure
         returns (
             string memory name,
-            Schema[] memory schemas // map to Seaport Improvement Proposal IDs
+            Schema[] memory schemas // map to Shibaport Improvement Proposal IDs
         )
     {
         name = "ERC1155SeaDrop";
@@ -417,9 +417,9 @@ contract ERC1155ShibaDropContractOffererImplementation is
         // Ensure this contract is only called into with delegatecall.
         _onlyDelegateCalled();
 
-        // Only an allowed Seaport can call this function.
+        // Only an allowed Shibaport can call this function.
         if (
-            !ERC1155ShibaDropContractOffererStorage.layout()._allowedSeaport[
+            !ERC1155ShibaDropContractOffererStorage.layout()._allowedShibaport[
                 msg.sender
             ]
         ) {
@@ -440,7 +440,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
      *
      *      Do not use this method directly.
      *
-     * @custom:param caller       The address of the caller (e.g. Seaport).
+     * @custom:param caller       The address of the caller (e.g. Shibaport).
      * @param fulfiller           The address of the fulfiller.
      * @param minimumReceived     The minimum items that the caller must
      *                            receive.
@@ -1016,7 +1016,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
         // Define a variable if the drop stage is inactive.
         bool inactive;
 
-        // Using the same check for time boundary from Seaport.
+        // Using the same check for time boundary from Shibaport.
         // startTime <= block.timestamp < endTime
         assembly {
             inactive := or(
@@ -1345,11 +1345,11 @@ contract ERC1155ShibaDropContractOffererImplementation is
     }
 
     /**
-     * @notice Implementation function to update the allowed Seaport contracts.
+     * @notice Implementation function to update the allowed Shibaport contracts.
      *
      *         Do not use this method directly.
      *
-     * @param allowedShibaport The allowed Seaport addresses.
+     * @param allowedShibaport The allowed Shibaport addresses.
      */
     function updateAllowedSeaport(address[] calldata allowedShibaport) external {
         // Ensure this contract is only called into with delegatecall.
@@ -1359,29 +1359,29 @@ contract ERC1155ShibaDropContractOffererImplementation is
         uint256 allowedSeaportLength = allowedShibaport.length;
         uint256 enumeratedAllowedSeaportLength = ERC1155ShibaDropContractOffererStorage
                 .layout()
-                ._enumeratedAllowedSeaport
+                ._enumeratedAllowedShibaport
                 .length;
 
         // Reset the old mapping.
         for (uint256 i = 0; i < enumeratedAllowedSeaportLength; ) {
-            ERC1155ShibaDropContractOffererStorage.layout()._allowedSeaport[
+            ERC1155ShibaDropContractOffererStorage.layout()._allowedShibaport[
                 ERC1155ShibaDropContractOffererStorage
                     .layout()
-                    ._enumeratedAllowedSeaport[i]
+                    ._enumeratedAllowedShibaport[i]
             ] = false;
             unchecked {
                 ++i;
             }
         }
 
-        // Set the new mapping for allowed Seaport contracts.
+        // Set the new mapping for allowed Shibaport contracts.
         for (uint256 i = 0; i < allowedSeaportLength; ) {
-            // Ensure the allowed Seaport address is not the zero address.
+            // Ensure the allowed Shibaport address is not the zero address.
             if (allowedShibaport[i] == address(0)) {
                 revert AllowedSeaportCannotBeZeroAddress();
             }
 
-            ERC1155ShibaDropContractOffererStorage.layout()._allowedSeaport[
+            ERC1155ShibaDropContractOffererStorage.layout()._allowedShibaport[
                 allowedShibaport[i]
             ] = true;
             unchecked {
@@ -1392,7 +1392,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
         // Set the enumeration.
         ERC1155ShibaDropContractOffererStorage
             .layout()
-            ._enumeratedAllowedSeaport = allowedShibaport;
+            ._enumeratedAllowedShibaport = allowedShibaport;
 
         // Emit an event for the update.
         emit AllowedSeaportUpdated(allowedShibaport);

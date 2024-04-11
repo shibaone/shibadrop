@@ -7,10 +7,10 @@ import { CreatorPayout } from "./ShibaDropStructs.sol";
 
 library ERC1155ShibaDropContractOffererStorage {
     struct Layout {
-        /// @notice The allowed Seaport addresses that can mint.
-        mapping(address => bool) _allowedSeaport;
-        /// @notice The enumerated allowed Seaport addresses.
-        address[] _enumeratedAllowedSeaport;
+        /// @notice The allowed Shibaport addresses that can mint.
+        mapping(address => bool) _allowedShibaport;
+        /// @notice The enumerated allowed Shibaport addresses.
+        address[] _enumeratedAllowedShibaport;
         /// @notice The public drop data.
         mapping(uint256 => PublicDrop) _publicDrops;
         /// @notice The enumerated public drop indexes.

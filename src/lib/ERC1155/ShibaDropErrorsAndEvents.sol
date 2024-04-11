@@ -6,7 +6,7 @@ import { CreatorPayout, PublicDrop } from "./ERC721ShibaDropStructs.sol";
 interface ShibaDropErrorsAndEvents {
     /**
      * @notice The SeaDrop token types, emitted as part of
-     *         `event SeaDropTokenDeployed`.
+     *         `event ShibaDropTokenDeployed`.
      */
     enum SEADROP_TOKEN_TYPE {
         ERC721_STANDARD,
@@ -20,7 +20,7 @@ interface ShibaDropErrorsAndEvents {
     /**
      * @notice An event to signify that a SeaDrop token contract was deployed.
      */
-    event SeaDropTokenDeployed(SEADROP_TOKEN_TYPE tokenType);
+    event ShibaDropTokenDeployed(SEADROP_TOKEN_TYPE tokenType);
 
     /**
      * @notice Revert with an error if the function selector is not supported.
@@ -245,7 +245,7 @@ interface ShibaDropErrorsAndEvents {
     error NoBalanceToWithdraw();
 
     /**
-     * @dev Revert with an error if the caller is not an allowed Seaport.
+     * @dev Revert with an error if the caller is not an allowed Shibaport.
      */
     error InvalidCallerOnlyAllowedSeaport(address caller);
 
@@ -277,13 +277,13 @@ interface ShibaDropErrorsAndEvents {
     error OnlyDelegateCalled();
 
     /**
-     * @dev Revert with an error if the provided allowed Seaport is the
+     * @dev Revert with an error if the provided allowed Shibaport is the
      *      zero address.
      */
     error AllowedSeaportCannotBeZeroAddress();
 
     /**
-     * @dev Emit an event when allowed Seaport contracts are updated.
+     * @dev Emit an event when allowed Shibaport contracts are updated.
      */
     event AllowedSeaportUpdated(address[] allowedShibaport);
 
