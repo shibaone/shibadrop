@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity 0.8.17;
 
 interface IERC173 {
     /// @notice Returns the address of the owner.

@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity 0.8.17;
 
 import {
     ERC1155ShibaDropContractOffererStorage
@@ -17,21 +17,21 @@ import {
 
 import { AllowListData, CreatorPayout } from "./ShibaDropStructs.sol";
 
-import { IERC1155ShibaDrop } from "../interfaces/IERC1155ShibaDrop.sol";
+import { IERC1155ShibaDrop } from "../../interfaces/ERC1155/IERC1155ShibaDrop.sol";
 
-import { IShibaDropToken } from "../interfaces/IShibaDropToken.sol";
+import { IShibaDropToken } from "../../interfaces/ERC1155/IShibaDropToken.sol";
 
-import { IDelegationRegistry } from "../interfaces/IDelegationRegistry.sol";
+import { IDelegationRegistry } from "../../interfaces/ERC1155/IDelegationRegistry.sol";
 
-import { ItemType } from "shibaport-types/src/lib/ConsiderationEnums.sol";
+import { ItemType } from "../../shibaport-types/lib/ConsiderationEnums.sol";
 
 import {
     ReceivedItem,
     SpentItem,
     Schema
-} from "shibaport-types/src/lib/ConsiderationStructs.sol";
+} from "../../shibaport-types/lib/ConsiderationStructs.sol";
 
-import { ECDSA } from "solady/src/utils/ECDSA.sol";
+import { ECDSA } from "../../solady/utils/ECDSA.sol";
 
 /**
  * @title  ERC1155ShibaDropContractOffererImplementation

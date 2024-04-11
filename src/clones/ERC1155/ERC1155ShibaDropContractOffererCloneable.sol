@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity 0.8.17;
 
 import {
     IERC1155ShibaDrop
@@ -27,17 +27,17 @@ import {
     ERC1155ConduitPreapproved
 } from "../../lib/ERC1155/ERC1155ConduitPreapproved.sol";
 
-import { ERC1155 } from "solady/src/tokens/ERC1155.sol";
+import { ERC1155 } from "../../solady/tokens/ERC1155.sol";
 
-import { SpentItem } from "shibaport-types/src/lib/ConsiderationStructs.sol";
+import { SpentItem } from "../../shibaport-types/lib/ConsiderationStructs.sol";
 
 import {
     ContractOffererInterface
-} from "shibaport-types/src/interfaces/ContractOffererInterface.sol";
+} from "../../shibaport-types/interfaces/ContractOffererInterface.sol";
 
 import {
     IERC165
-} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+} from "openzeppelin-contracts/utils/introspection/IERC165.sol";
 
 /**
  * @title  ERC1155ShibaDropContractOffererCloneable

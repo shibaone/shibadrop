@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity 0.8.17;
 
 import {
     ERC1155ShibaDropContractOffererImplementation
@@ -11,11 +11,11 @@ import { AllowListData, CreatorPayout } from "./ShibaDropStructs.sol";
 
 import {
     IERC1155ContractMetadata
-} from "../interfaces/IERC1155ContractMetadata.sol";
+} from "../../interfaces/ERC1155/IERC1155ContractMetadata.sol";
 
-import { IERC1155ShibaDrop } from "../interfaces/IERC1155ShibaDrop.sol";
+import { IERC1155ShibaDrop } from "../../interfaces/ERC1155/IERC1155ShibaDrop.sol";
 
-import { IERC173 } from "../interfaces/IERC173.sol";
+import { IERC173 } from "../../interfaces/ERC1155/IERC173.sol";
 
 /**
  * @title  ERC1155ShibaDropConfigurer

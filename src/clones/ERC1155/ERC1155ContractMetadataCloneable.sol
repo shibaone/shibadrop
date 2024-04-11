@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19;
+pragma solidity 0.8.17;
 
 import {
     IERC1155ContractMetadata
@@ -22,15 +22,15 @@ import {
     TokenTransferValidator
 } from "../../lib/ERC1155/TokenTransferValidator.sol";
 
-import { ERC1155 } from "solady/src/tokens/ERC1155.sol";
+import { ERC1155 } from "../../solady/tokens/ERC1155.sol";
 
-import { ERC2981 } from "solady/src/tokens/ERC2981.sol";
+import { ERC2981 } from "../../solady/tokens/ERC2981.sol";
 
-import { Ownable } from "solady/src/auth/Ownable.sol";
+import { Ownable } from "../../solady/auth/Ownable.sol";
 
 import {
     Initializable
-} from "@openzeppelin-upgradeable/contracts/proxy/utils/Initializable.sol";
+} from "@openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol";
 
 /**
  * @title  ERC1155ContractMetadataCloneable
