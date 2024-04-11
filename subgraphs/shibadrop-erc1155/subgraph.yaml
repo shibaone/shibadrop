@@ -1,0 +1,114 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ERC1155ShibaDropCloneFactory
+    network: sepolia
+    source:
+      address: "0x3dc194401E559aEfE6bfA89E66Cb5756C85A89dE"
+      abi: ERC1155ShibaDropCloneFactory
+      startBlock: 5675029
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - NewInstance1155
+      abis:
+        - name: ERC1155ShibaDropCloneFactory
+          file: ./abis/ERC1155ShibaDropCloneFactory.json
+      eventHandlers:
+        - event: NewInstance1155(indexed address,indexed address)
+          handler: handleNewInstance1155
+      file: ./src/erc-1155-shiba-drop-clone-factory.ts
+templates:
+  - kind: ethereum/contract
+    name: ERC1155ShibaDropCloneable
+    network: sepolia
+    source:
+      abi: ERC1155ShibaDropCloneable
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AllowListUpdated
+        - AllowedFeeRecipientUpdated
+        - AllowedSeaportUpdated
+        - ApprovalForAll
+        - BatchMetadataUpdate
+        - ContractURIUpdated
+        - CreatorPayoutsUpdated
+        - DropURIUpdated
+        - Initialized
+        - MaxSupplyUpdated
+        - OwnershipHandoverCanceled
+        - OwnershipHandoverRequested
+        - OwnershipTransferred
+        - PayerUpdated
+        - ProvenanceHashUpdated
+        - PublicDropUpdated
+        - RoyaltyInfoUpdated
+        - SeaDropMint
+        - SeaDropTokenDeployed
+        - SignerUpdated
+        - TransferBatch
+        - TransferSingle
+        - TransferValidatorUpdated
+        - URI
+      abis:
+        - name: ERC1155ShibaDropCloneable
+          file: ./abis/ERC1155ShibaDropCloneable.json
+      eventHandlers:
+        - event: AllowListUpdated(indexed bytes32,indexed bytes32,string[],string)
+          handler: handleAllowListUpdated
+        - event: AllowedFeeRecipientUpdated(indexed address,indexed bool)
+          handler: handleAllowedFeeRecipientUpdated
+        - event: AllowedSeaportUpdated(address[])
+          handler: handleAllowedSeaportUpdated
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BatchMetadataUpdate(uint256,uint256)
+          handler: handleBatchMetadataUpdate
+        - event: ContractURIUpdated(string)
+          handler: handleContractURIUpdated
+        - event: CreatorPayoutsUpdated((address,uint16)[])
+          handler: handleCreatorPayoutsUpdated
+        - event: DropURIUpdated(string)
+          handler: handleDropURIUpdated
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: MaxSupplyUpdated(uint256,uint256)
+          handler: handleMaxSupplyUpdated
+        - event: OwnershipHandoverCanceled(indexed address)
+          handler: handleOwnershipHandoverCanceled
+        - event: OwnershipHandoverRequested(indexed address)
+          handler: handleOwnershipHandoverRequested
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PayerUpdated(indexed address,indexed bool)
+          handler: handlePayerUpdated
+        - event: ProvenanceHashUpdated(bytes32,bytes32)
+          handler: handleProvenanceHashUpdated
+        - event: PublicDropUpdated((uint80,uint80,uint40,uint40,bool,address,uint24,uint24,uint16,uint16,uint16),uint256)
+          handler: handlePublicDropUpdated
+        - event: RoyaltyInfoUpdated(address,uint256)
+          handler: handleRoyaltyInfoUpdated
+        - event: SeaDropMint(address,uint256)
+          handler: handleSeaDropMint
+        - event: SeaDropTokenDeployed(uint8)
+          handler: handleSeaDropTokenDeployed
+        - event: SignerUpdated(indexed address,indexed bool)
+          handler: handleSignerUpdated
+        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
+          handler: handleTransferBatch
+        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
+          handler: handleTransferSingle
+        - event: TransferValidatorUpdated(address,address)
+          handler: handleTransferValidatorUpdated
+        - event: URI(string,indexed uint256)
+          handler: handleURI
+      file: ./src/erc-1155-shiba-drop-cloneable.ts

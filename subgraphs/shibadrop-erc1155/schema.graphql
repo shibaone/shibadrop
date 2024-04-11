@@ -1,0 +1,234 @@
+type NewInstance1155 @entity(immutable: true) {
+  id: Bytes!
+  instance: Bytes! # address
+  creator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type AllowListUpdated @entity(immutable: true) {
+  id: Bytes!
+  previousMerkleRoot: Bytes! # bytes32
+  newMerkleRoot: Bytes! # bytes32
+  publicKeyURI: [String!]! # string[]
+  allowListURI: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AllowedFeeRecipientUpdated @entity(immutable: true) {
+  id: Bytes!
+  feeRecipient: Bytes! # address
+  allowed: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type AllowedSeaportUpdated @entity(immutable: true) {
+  id: Bytes!
+  allowedShibaport: [Bytes!]! # address[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ApprovalForAll @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  operator: Bytes! # address
+  isApproved: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BatchMetadataUpdate @entity(immutable: true) {
+  id: Bytes!
+  _fromTokenId: BigInt! # uint256
+  _toTokenId: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ContractURIUpdated @entity(immutable: true) {
+  id: Bytes!
+  newContractURI: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CreatorPayoutsUpdated @entity(immutable: true) {
+  id: Bytes!
+  creatorPayouts: [Bytes!]! # tuple[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DropURIUpdated @entity(immutable: true) {
+  id: Bytes!
+  newDropURI: String! # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  version: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MaxSupplyUpdated @entity(immutable: true) {
+  id: Bytes!
+  tokenId: BigInt! # uint256
+  newMaxSupply: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipHandoverCanceled @entity(immutable: true) {
+  id: Bytes!
+  pendingOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipHandoverRequested @entity(immutable: true) {
+  id: Bytes!
+  pendingOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  oldOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PayerUpdated @entity(immutable: true) {
+  id: Bytes!
+  payer: Bytes! # address
+  allowed: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ProvenanceHashUpdated @entity(immutable: true) {
+  id: Bytes!
+  previousHash: Bytes! # bytes32
+  newHash: Bytes! # bytes32
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PublicDropUpdated @entity(immutable: true) {
+  id: Bytes!
+  publicDrop_startPrice: BigInt! # uint80
+  publicDrop_endPrice: BigInt! # uint80
+  publicDrop_startTime: BigInt! # uint40
+  publicDrop_endTime: BigInt! # uint40
+  publicDrop_restrictFeeRecipients: Boolean! # bool
+  publicDrop_paymentToken: Bytes! # address
+  publicDrop_fromTokenId: Int! # uint24
+  publicDrop_toTokenId: Int! # uint24
+  publicDrop_maxTotalMintableByWallet: Int! # uint16
+  publicDrop_maxTotalMintableByWalletPerToken: Int! # uint16
+  publicDrop_feeBps: Int! # uint16
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RoyaltyInfoUpdated @entity(immutable: true) {
+  id: Bytes!
+  receiver: Bytes! # address
+  basisPoints: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SeaDropMint @entity(immutable: true) {
+  id: Bytes!
+  payer: Bytes! # address
+  dropStageIndex: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SeaDropTokenDeployed @entity(immutable: true) {
+  id: Bytes!
+  tokenType: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SignerUpdated @entity(immutable: true) {
+  id: Bytes!
+  signer: Bytes! # address
+  allowed: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransferBatch @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  from: Bytes! # address
+  to: Bytes! # address
+  ids: [BigInt!]! # uint256[]
+  amounts: [BigInt!]! # uint256[]
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransferSingle @entity(immutable: true) {
+  id: Bytes!
+  operator: Bytes! # address
+  from: Bytes! # address
+  to: Bytes! # address
+  ERC1155ShibaDropCloneable_id: BigInt! # uint256
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TransferValidatorUpdated @entity(immutable: true) {
+  id: Bytes!
+  oldValidator: Bytes! # address
+  newValidator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type URI @entity(immutable: true) {
+  id: Bytes!
+  value: String! # string
+  ERC1155ShibaDropCloneable_id: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
