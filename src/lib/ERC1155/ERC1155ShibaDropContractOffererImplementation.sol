@@ -112,7 +112,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
                 "address verifyingContract"
             ")"
         );
-    bytes32 internal constant _NAME_HASH = keccak256("ERC1155SeaDrop");
+    bytes32 internal constant _NAME_HASH = keccak256("ERC1155ShibaDrop");
     bytes32 internal constant _VERSION_HASH = keccak256("2.0");
 
     /**
@@ -232,7 +232,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
      * @return name    The name of the contract offerer.
      * @return schemas The schemas supported by the contract offerer.
      */
-    function getSeaportMetadata()
+    function getShibaportMetadata()
         external
         pure
         returns (
@@ -240,7 +240,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
             Schema[] memory schemas // map to Shibaport Improvement Proposal IDs
         )
     {
-        name = "ERC1155SeaDrop";
+        name = "ERC1155ShibaDrop";
         schemas = new Schema[](1);
         schemas[0].id = 12;
 

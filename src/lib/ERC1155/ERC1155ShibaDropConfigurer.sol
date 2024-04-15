@@ -23,7 +23,7 @@ import { IERC173 } from "../../interfaces/ERC1155/IERC173.sol";
  * @author Ryan Ghods (ralxz.eth)
  * @author Stephan Min (stephanm.eth)
  * @author Michael Cohen (notmichael.eth)
- * @notice A helper contract to configure parameters for ERC1155SeaDrop.
+ * @notice A helper contract to configure parameters for ERC1155ShibaDrop.
  */
 contract ERC1155ShibaDropConfigurer is
     ERC1155ShibaDropContractOffererImplementation
@@ -55,7 +55,7 @@ contract ERC1155ShibaDropConfigurer is
      *         to unset or reset any properties to zero, as this method
      *         will ignore zero-value properties in the config struct.
      *
-     * @param token  The ERC1155SeaDrop contract address.
+     * @param token  The ERC1155ShibaDrop contract address.
      * @param config The configuration struct.
      */
     function multiConfigure(

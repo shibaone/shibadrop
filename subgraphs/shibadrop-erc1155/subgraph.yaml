@@ -20,6 +20,8 @@ dataSources:
       abis:
         - name: ERC1155ShibaDropCloneFactory
           file: ./abis/ERC1155ShibaDropCloneFactory.json
+        - name: ERC1155ShibaDropCloneable
+          file: ./abis/ERC1155ShibaDropCloneable.json
       eventHandlers:
         - event: NewInstance1155(indexed address,indexed address)
           handler: handleNewInstance1155

@@ -6,7 +6,7 @@ import { IShibaDropToken } from "./IShibaDropToken.sol";
 import { PublicDrop } from "../../lib/ERC1155/ERC1155ShibaDropStructs.sol";
 
 /**
- * @dev A helper interface to get and set parameters for ERC1155SeaDrop.
+ * @dev A helper interface to get and set parameters for ERC1155ShibaDrop.
  *      The token does not expose these methods as part of its external
  *      interface to optimize contract size, but does implement them.
  */

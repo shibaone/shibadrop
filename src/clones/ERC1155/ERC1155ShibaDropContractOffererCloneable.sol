@@ -80,11 +80,11 @@ contract ERC1155ShibaDropContractOffererCloneable is
             ] = true;
 
         // Set the allowed Shibaport enumeration.
-        address[] memory enumeratedAllowedSeaport = new address[](1);
-        enumeratedAllowedSeaport[0] = allowedShibaport;
+        address[] memory enumeratedAllowedShibaport = new address[](1);
+        enumeratedAllowedShibaport[0] = allowedShibaport;
         ERC1155ShibaDropContractOffererStorage
             .layout()
-            ._enumeratedAllowedShibaport = enumeratedAllowedSeaport;
+            ._enumeratedAllowedShibaport = enumeratedAllowedShibaport;
 
         // Emit an event noting the contract deployment.
         emit ShibaDropTokenDeployed(SEADROP_TOKEN_TYPE.ERC1155_CLONE);
@@ -121,7 +121,8 @@ contract ERC1155ShibaDropContractOffererCloneable is
             selector == IERC1155ShibaDrop.updatePublicDrop.selector ||
             selector == ContractOffererInterface.previewOrder.selector ||
             selector == ContractOffererInterface.generateOrder.selector ||
-            selector == ContractOffererInterface.getSeaportMetadata.selector ||
+            selector ==
+            ContractOffererInterface.getShibaportMetadata.selector ||
             selector == IERC1155ShibaDrop.getPublicDrop.selector ||
             selector == IERC1155ShibaDrop.getPublicDropIndexes.selector ||
             selector == IShibaDropToken.getAllowedSeaport.selector ||
@@ -309,7 +310,7 @@ contract ERC1155ShibaDropContractOffererCloneable is
         return
             interfaceId == type(IERC1155ShibaDrop).interfaceId ||
             interfaceId == type(ContractOffererInterface).interfaceId ||
-            interfaceId == 0x2e778efc || // SIP-5 (getSeaportMetadata)
+            interfaceId == 0x2e778efc || // SIP-5 (getShibaportMetadata)
             // ERC1155ContractMetadata returns supportsInterface true for
             //     IERC1155ContractMetadata, ERC-4906, ERC-2981
             // ERC1155A returns supportsInterface true for

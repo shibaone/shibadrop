@@ -90,7 +90,7 @@ interface ContractOffererInterface is IERC165 {
      * @return name    The name of the contract offerer.
      * @return schemas The schemas supported by the contract offerer.
      */
-    function getSeaportMetadata()
+    function getShibaportMetadata()
         external
         view
         returns (string memory name, Schema[] memory schemas); // map to Shibaport Improvement Proposal IDs
