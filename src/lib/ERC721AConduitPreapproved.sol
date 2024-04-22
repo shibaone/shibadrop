@@ -5,10 +5,10 @@ import { ERC721A } from "ERC721A/ERC721A.sol";
 
 /**
  * @title  ERC721AConduitPreapproved
- * @notice ERC721A with the OpenSea conduit preapproved.
+ * @notice ERC721A with the ShibaSea conduit preapproved.
  */
 abstract contract ERC721AConduitPreapproved is ERC721A {
-    /// @dev The canonical OpenSea conduit.
+    /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
         0x1E0049783F008A0085193E00003D00cd54003c71;
 

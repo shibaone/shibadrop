@@ -5,10 +5,10 @@ import { ERC1155 } from "../../solady/tokens/ERC1155.sol";
 
 /**
  * @title  ERC1155ConduitPreapproved
- * @notice Solady's ERC1155 with the OpenSea conduit preapproved.
+ * @notice Solady's ERC1155 with the ShibaSea conduit preapproved.
  */
 abstract contract ERC1155ConduitPreapproved is ERC1155 {
-    /// @dev The canonical OpenSea conduit.
+    /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
         0x1E0049783F008A0085193E00003D00cd54003c71;
 

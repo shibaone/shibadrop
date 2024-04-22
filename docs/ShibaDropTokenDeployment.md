@@ -129,7 +129,7 @@ Follows the pattern of `tokenURI` — could be either on-chain data blob or exte
 
 ### Format of Allow List URI
 
-The allow list may be optionally encrypted with PGP when emitted with `updateAllowList()` to retain privacy. The OpenSea public key is available [here](https://opensea.io/.well-known/allowlist-pubkeys/mainnet/ALLOWLIST_ENCRYPTION_KEY_0.txt), although it may be rotated in the future, so please ask an OpenSea team member if it is the right key to use at the time of update.
+The allow list may be optionally encrypted with PGP when emitted with `updateAllowList()` to retain privacy. The ShibaSea public key is available [here](https://opensea.io/.well-known/allowlist-pubkeys/mainnet/ALLOWLIST_ENCRYPTION_KEY_0.txt), although it may be rotated in the future, so please ask an ShibaSea team member if it is the right key to use at the time of update.
 
 #### Example
 
