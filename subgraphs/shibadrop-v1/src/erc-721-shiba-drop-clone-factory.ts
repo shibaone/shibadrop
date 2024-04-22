@@ -20,6 +20,8 @@ export function handleNewInstance(event: NewInstanceEvent): void {
   entity.name = name;
   entity.symbol = symbol;
   entity.creator = event.transaction.from;
+  entity.type = "Proxy"; // The contracts created from CloneFactory are proxies
+  entity.standard = "erc721";
 
   CloneableContract.create(event.params.instance);
 

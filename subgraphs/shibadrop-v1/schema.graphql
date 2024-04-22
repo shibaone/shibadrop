@@ -118,6 +118,8 @@ type NewInstance @entity(immutable: true) {
   name: String!
   symbol: String!
   creator: Bytes!
+  type: String! # Either Proxy or Standard
+  standard: String! # erc721
 }
 
 type AllowedShibaDropUpdated @entity(immutable: true) {

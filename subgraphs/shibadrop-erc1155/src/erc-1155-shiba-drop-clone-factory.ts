@@ -20,6 +20,8 @@ export function handleNewInstance1155(event: NewInstance1155Event): void {
   const symbol = contract.symbol();
   entity.name = name;
   entity.symbol = symbol;
+  entity.type = "Proxy";
+  entity.standard = "erc1155";
 
   CloneableContract.create(event.params.instance);
 

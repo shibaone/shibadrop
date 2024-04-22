@@ -7,6 +7,8 @@ type NewInstance1155 @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  type: String!
+  standard: String! #erc1155
 }
 type AllowListUpdated @entity(immutable: true) {
   id: Bytes!
