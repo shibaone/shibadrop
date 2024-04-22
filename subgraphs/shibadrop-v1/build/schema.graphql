@@ -117,6 +117,7 @@ type NewInstance @entity(immutable: true) {
   transactionHash: Bytes!
   name: String!
   symbol: String!
+  creator: Bytes!
 }
 
 type AllowedShibaDropUpdated @entity(immutable: true) {

@@ -14,11 +14,12 @@ export function handleNewInstance(event: NewInstanceEvent): void {
   entity.transactionHash = event.transaction.hash;
 
   // To fetch the token name & symbol and store it in the subgraph
-  let contract = ERC721ShibaDropCloneable.bind(event.params.instance);
-  let name = contract.name();
-  let symbol = contract.symbol();
+  const contract = ERC721ShibaDropCloneable.bind(event.params.instance);
+  const name = contract.name();
+  const symbol = contract.symbol();
   entity.name = name;
   entity.symbol = symbol;
+  entity.creator = event.transaction.from;
 
   CloneableContract.create(event.params.instance);
 
