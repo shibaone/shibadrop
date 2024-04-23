@@ -10,7 +10,7 @@ contract ERC721ShibaDropCloneFactory {
     address public constant DEFAULT_SHIBADROP =
         0x4a5E9F41d59DbEb6CA907A148203B13a5Ce12a85;
 
-    event NewInstance(address indexed instance);
+    event NewInstance(address indexed instance, address indexed creator);
 
     constructor() {
         ERC721ShibaDropCloneable impl = new ERC721ShibaDropCloneable();
@@ -41,7 +41,7 @@ contract ERC721ShibaDropCloneFactory {
             allowedShibaDrop,
             msg.sender
         );
-        emit NewInstance(instance);
+        emit NewInstance(instance, msg.sender);
         return instance;
     }
 }
