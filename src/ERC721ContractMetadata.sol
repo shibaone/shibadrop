@@ -20,11 +20,11 @@ import { ITransferValidator721 } from "./interfaces/ITransferValidator.sol";
 
 import { TwoStepOwnable } from "utility-contracts/TwoStepOwnable.sol";
 
-import { IERC2981 } from "openzeppelin-contracts/interfaces/IERC2981.sol";
+import { IERC2981 } from "@openzeppelin/contracts/interfaces/IERC2981.sol";
 
 import {
     IERC165
-} from "openzeppelin-contracts/utils/introspection/IERC165.sol";
+} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 /**
  * @title  ERC721ContractMetadata

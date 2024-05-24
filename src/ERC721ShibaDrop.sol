@@ -29,7 +29,7 @@ import { ReentrancyGuard } from "solmate/utils/ReentrancyGuard.sol";
 
 import {
     IERC165
-} from "openzeppelin-contracts/utils/introspection/IERC165.sol";
+} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 /**
  * @title  ERC721ShibaDrop

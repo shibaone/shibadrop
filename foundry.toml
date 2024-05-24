@@ -23,5 +23,9 @@ test = 'src'
 [rpc_endpoints]
 goerli = '${GOERLI_RPC_URL}'
 mainnet = '${ETHEREUM_RPC_URL}'
+puppynet = "https://puppynet.shibrpc.com/"
+
+[etherscan]
+puppynet = {key="7f80a939-7973-4249-a064-3f355244b930", chain=157, url="https://puppyscan.shib.io/"}
 
 # See more config options https://github.com/foundry-rs/foundry/tree/master/config

@@ -3,12 +3,12 @@ pragma solidity 0.8.17;
 
 import { ERC721ShibaDropCloneable } from "./ERC721ShibaDropCloneable.sol";
 
-import { Clones } from "openzeppelin-contracts/proxy/Clones.sol";
+import { Clones } from "@openzeppelin/contracts/proxy/Clones.sol";
 
 contract ERC721ShibaDropCloneFactory {
     address public immutable shibaDropCloneableUpgradeableImplementation;
     address public constant DEFAULT_SHIBADROP =
-        0x4a5E9F41d59DbEb6CA907A148203B13a5Ce12a85;
+        0xCfEdAdacBd14724583d560Dd1DBB652049dd028b;
 
     event NewInstance(address indexed instance, address indexed creator);
 

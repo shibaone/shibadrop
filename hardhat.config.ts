@@ -55,13 +55,38 @@ const config: HardhatUserConfig = {
     verificationNetwork: {
       url: process.env.NETWORK_RPC ?? "",
     },
+    puppynet: {
+      url: "https://puppynet.shibrpc.com/",
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
     currency: "USD",
   },
   etherscan: {
-    apiKey: process.env.EXPLORER_API_KEY,
+    apiKey: {
+      shibarium: "abc", //literally anything here will work
+      puppynet: "abc",
+    },
+    customChains: [
+      {
+        network: "shibarium",
+        chainId: 109,
+        urls: {
+          apiURL: "https://www.shibariumscan.io/api/",
+          browserURL: "https://www.shibariumscan.io/",
+        },
+      },
+      {
+        network: "puppynet",
+        chainId: 157,
+        urls: {
+          apiURL: "https://puppyscan.shib.io/api/",
+          browserURL: "https://puppyscan.shib.io/",
+        },
+      },
+    ],
   },
   preprocess: {
     eachLine: (hre) => ({
