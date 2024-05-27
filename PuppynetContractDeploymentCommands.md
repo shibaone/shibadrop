@@ -103,6 +103,11 @@ USING HARDHAT:
 npx hardhat run hh-scripts/deployERC721ShibaDropCloneFactory.js --network puppynet
 
 npx hardhat --network puppynet verify --contract src/clones/ERC721ShibaDropCloneFactory.sol:ERC721ShibaDropCloneFactory "CONTRACT_DEPLOYED_ADDRESS"
+
+
+Verify ERC721ShibaDropCloneable contract
+
+npx hardhat --network puppynet verify --contract src/clones/ERC721ShibaDropCloneable.sol:ERC721ShibaDropCloneable "CONTRACT_DEPLOYED_ADDRESS"
 ```
 
 8. Deploy ERC1155ShibaDropCloneFactory
@@ -120,6 +125,14 @@ USING HARDHAT:
 npx hardhat run hh-scripts/deployERC1155ShibaDropCloneFactory.js --network puppynet
 
 npx hardhat --network puppynet verify --contract src/clones/ERC1155/ERC1155ShibaDropCloneFactory.sol:ERC1155ShibaDropCloneFactory "CONTRACT_DEPLOYED_ADDRESS"
+
+Verify ERC1155ShibaDropCloneable contract
+
+npx hardhat --network puppynet verify --contract src/clones/ERC1155/ERC1155ShibaDropCloneable.sol:ERC1155ShibaDropCloneable "CONTRACT_DEPLOYED_ADDRESS"
+
+Verify ERC1155ShibaDropConfigurer contract
+
+npx hardhat --network puppynet verify --contract src/lib/ERC1155/ERC1155ShibaDropConfigurer.sol:ERC1155ShibaDropConfigurer "CONTRACT_DEPLOYED_ADDRESS"
 ```
 
 Note:
