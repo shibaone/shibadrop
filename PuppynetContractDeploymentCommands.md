@@ -124,7 +124,7 @@ USING HARDHAT:
 
 npx hardhat run hh-scripts/deployERC1155ShibaDropCloneFactory.js --network puppynet
 
-npx hardhat --network puppynet verify --contract src/clones/ERC1155/ERC1155ShibaDropCloneFactory.sol:ERC1155ShibaDropCloneFactory "CONTRACT_DEPLOYED_ADDRESS"
+npx hardhat --network puppynet verify --contract src/clones/ERC1155/ERC1155ShibaDropCloneFactory.sol:ERC1155ShibaDropCloneFactory "CONTRACT_DEPLOYED_ADDRESS" "CONSTRUCTOR ARG 1"
 
 Verify ERC1155ShibaDropCloneable contract
 
@@ -133,6 +133,27 @@ npx hardhat --network puppynet verify --contract src/clones/ERC1155/ERC1155Shiba
 Verify ERC1155ShibaDropConfigurer contract
 
 npx hardhat --network puppynet verify --contract src/lib/ERC1155/ERC1155ShibaDropConfigurer.sol:ERC1155ShibaDropConfigurer "CONTRACT_DEPLOYED_ADDRESS"
+```
+
+9. Deploy Marketplace contract
+
+```
+cd marketplace-escrow
+forge clean
+forge build
+Update .env with the required fields
+forge script script/Deploy.s.sol:Deploy --rpc-url puppynet --broadcast --verifier blockscout --verify --watch -vvvv --ffi
+```
+
+10. Deploy Subgraph
+
+```
+cd marketplace-escrow-subgraph
+yarn install
+Change contract address & startBlock in puppynet_subgraph.yaml file
+yarn run codegen-puppynet
+yarn run build-puppynet
+yarn run deploy-puppynet
 ```
 
 Note:
