@@ -9,7 +9,7 @@ import { ERC721AUpgradeable } from "../../lib/ERC721A-Upgradeable/contracts/ERC7
  */
 abstract contract ERC721AConduitPreapprovedUpgradeable is ERC721AUpgradeable {
     /// @dev The canonical ShibaSea conduit.
-    address internal constant _CONDUIT = 0x9BCb5d51439d218d227D1979d327f7DcD71943F8;
+    address internal constant _CONDUIT = 0x0BbDac35a2c2457052A29409920a1f303812d94F;
 
     /**
      * @notice Deploy the token contract with its name and symbol.

@@ -10,7 +10,7 @@ import { ERC721ACloneable } from "./ERC721ACloneable.sol";
 abstract contract ERC721AConduitPreapprovedCloneable is ERC721ACloneable {
     /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
-        0x9BCb5d51439d218d227D1979d327f7DcD71943F8;
+        0x0BbDac35a2c2457052A29409920a1f303812d94F;
 
     /**
      * @dev Returns if the `operator` is allowed to manage all of the

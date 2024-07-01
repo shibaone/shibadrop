@@ -8,7 +8,7 @@ import { Clones } from "@openzeppelin/contracts/proxy/Clones.sol";
 contract ERC721ShibaDropCloneFactory {
     address public immutable shibaDropCloneableUpgradeableImplementation;
     address public constant DEFAULT_SHIBADROP =
-        0xCfEdAdacBd14724583d560Dd1DBB652049dd028b;
+        0xCb0fafA9D2FD319478459845375558DDd5fE5703;
 
     event NewInstance(address indexed instance, address indexed creator);
 
