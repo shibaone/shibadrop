@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity 0.8.25;
 
 import {
     IShibaDropTokenContractMetadata
@@ -133,8 +133,10 @@ contract ERC721ContractMetadataCloneable is
         // Ensure the sender is only the owner or contract itself.
         _onlyOwnerOrSelf();
 
+        uint64 supplyMaxValue = type(uint64).max;
+
         // Ensure the max supply does not exceed the maximum value of uint64.
-        if (newMaxSupply > 2**64 - 1) {
+        if (newMaxSupply > supplyMaxValue) {
             revert CannotExceedMaxSupplyOfUint64(newMaxSupply);
         }
 

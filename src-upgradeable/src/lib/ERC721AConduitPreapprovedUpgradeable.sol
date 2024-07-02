@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity 0.8.25;
 
 import { ERC721AUpgradeable } from "../../lib/ERC721A-Upgradeable/contracts/ERC721AUpgradeable.sol";
 

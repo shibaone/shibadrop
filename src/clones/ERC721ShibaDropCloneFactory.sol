@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity 0.8.25;
 
 import { ERC721ShibaDropCloneable } from "./ERC721ShibaDropCloneable.sol";
 
@@ -7,7 +7,7 @@ import { Clones } from "@openzeppelin/contracts/proxy/Clones.sol";
 
 contract ERC721ShibaDropCloneFactory {
     address public immutable shibaDropCloneableUpgradeableImplementation;
-    address public constant DEFAULT_SHIBADROP =
+    address private constant DEFAULT_SHIBADROP =
         0xCb0fafA9D2FD319478459845375558DDd5fE5703;
 
     event NewInstance(address indexed instance, address indexed creator);
@@ -22,14 +22,14 @@ contract ERC721ShibaDropCloneFactory {
         string memory name,
         string memory symbol,
         bytes32 salt
-    ) external returns (address) {
+    ) external returns (address instance) {
         // Derive a pseudo-random salt, so clone addresses don't collide
         // across chains.
         bytes32 cloneSalt = keccak256(
             abi.encodePacked(salt, blockhash(block.number))
         );
 
-        address instance = Clones.cloneDeterministic(
+        instance = Clones.cloneDeterministic(
             shibaDropCloneableUpgradeableImplementation,
             cloneSalt
         );

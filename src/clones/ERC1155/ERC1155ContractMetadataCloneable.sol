@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity 0.8.25;
 
 import {
     IERC1155ContractMetadata
@@ -179,9 +179,11 @@ contract ERC1155ContractMetadataCloneable is
         // Ensure the sender is only the owner or configurer contract.
         _onlyOwnerOrConfigurer();
 
+        uint64 supplyMaxValue = type(uint64).max;
+
         // Ensure the max supply does not exceed the maximum value of uint64,
         // a limit due to the storage of bit-packed variables in TokenSupply,
-        if (newMaxSupply > 2**64 - 1) {
+        if (newMaxSupply > supplyMaxValue) {
             revert CannotExceedMaxSupplyOfUint64(newMaxSupply);
         }
 

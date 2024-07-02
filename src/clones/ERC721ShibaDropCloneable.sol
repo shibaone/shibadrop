@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.17;
+pragma solidity 0.8.25;
 
 import {
     ERC721ContractMetadataCloneable,
@@ -65,7 +65,7 @@ contract ERC721ShibaDropCloneable is
      * @param seaDrop The ShibaDrop address to check if allowed.
      */
     function _onlyAllowedShibaDrop(address seaDrop) internal view {
-        if (_allowedShibaDrop[seaDrop] != true) {
+        if (!_allowedShibaDrop[seaDrop]) {
             revert OnlyAllowedShibaDrop();
         }
     }
