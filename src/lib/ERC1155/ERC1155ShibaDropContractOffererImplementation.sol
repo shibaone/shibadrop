@@ -50,7 +50,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
 
     /// @notice The delegation registry.
     IDelegationRegistry public constant DELEGATION_REGISTRY =
-        IDelegationRegistry(0x48dA374D54eB6C22d186F4bD4C93A7b8b2d065C2);
+        IDelegationRegistry(0x6fcceD73dDaF1a3455E6c951e9d7a0ABcBD115d6);
 
     /// @notice The original address of this contract, to ensure that it can
     ///         only be called into with delegatecall.

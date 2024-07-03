@@ -59,6 +59,10 @@ const config: HardhatUserConfig = {
       url: "https://puppynet.shibrpc.com/",
       accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
+    shibarium: {
+      url: "https://www.shibrpc.com",
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,

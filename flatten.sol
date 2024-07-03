@@ -6293,7 +6293,7 @@ interface IERC1155ContractMetadata is IShibaDrop1155TokenContractMetadata {
 abstract contract ERC1155ConduitPreapproved is ERC1155 {
     /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
-        0x1E0049783F008A0085193E00003D00cd54003c71;
+        0xf981c35f969A16831D2C55FEbcAac75c1B45dec3;
 
     function safeTransferFrom(
         address from,

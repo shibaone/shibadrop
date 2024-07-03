@@ -85,7 +85,7 @@ npx hardhat --network puppynet verify --contract src/lib/Conduit.sol:Conduit "CO
 6. Use the deployed address of Conduit in ERC721AConduitPreapproved#L13, ERC721AConduitPreapprovedCloneable#L13, ERC1155ConduitPreapproved#L13, ERC721AConduitPreapprovedUpgradeable#L12
 
 ```
-address internal constant _CONDUIT = 0x1E0049783F008A0085193E00003D00cd54003c71; // Change this value
+address internal constant _CONDUIT = 0xf981c35f969A16831D2C55FEbcAac75c1B45dec3; // Change this value
 ```
 
 7. Deploy ERC721ShibaDropCloneFactory
@@ -113,6 +113,8 @@ npx hardhat --network puppynet verify --contract src/clones/ERC721ShibaDropClone
 8. Deploy ERC1155ShibaDropCloneFactory
 
 ```
+*****UPDATE SHIBAPORT ADDRESS IN THE DEPLOYMENT SCRIPT*****
+
 forge create --rpc-url "https://puppynet.shibrpc.com/" src/clones/ERC1155/ERC1155ShibaDropCloneFactory.sol:ERC1155ShibaDropCloneFactory --constructor-args "0x78157C5Ca2e024D429A6b01E21caf542064a8De8" --private-key "0x1e6507068630d4b923c20675063df9b679f9bee5c2ca3a3ebfc53fc3076fe24d" --etherscan-api-key "7f80a939-7973-4249-a064-3f355244b930" --verify --verifier "blockscout"
 
 forge verify-contract "CONTRACT_DEPLOYED_ADDRESS" src/clones/ERC1155ShibaDropCloneFactory.sol:ERC1155ShibaDropCloneFactory --etherscan-api-key "7f80a939-7973-4249-a064-3f355244b930" --verify --verifier "blockscout" --chain-id 157
