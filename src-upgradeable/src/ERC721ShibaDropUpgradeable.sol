@@ -65,9 +65,7 @@ contract ERC721ShibaDropUpgradeable is
      * @param seaDrop The ShibaDrop address to check if allowed.
      */
     function _onlyAllowedShibaDrop(address seaDrop) internal view {
-        if (
-            ERC721ShibaDropStorage.layout()._allowedShibaDrop[seaDrop] != true
-        ) {
+        if (!ERC721ShibaDropStorage.layout()._allowedShibaDrop[seaDrop]) {
             revert OnlyAllowedShibaDrop();
         }
     }

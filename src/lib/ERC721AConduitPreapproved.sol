@@ -10,7 +10,7 @@ import { ERC721A } from "ERC721A/ERC721A.sol";
 abstract contract ERC721AConduitPreapproved is ERC721A {
     /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
-        0x1E0049783F008A0085193E00003D00cd54003c71;
+        0x7a236da740545ffFA00Be6ad5957bF3a118Dfd42;
 
     /**
      * @notice Deploy the token contract.

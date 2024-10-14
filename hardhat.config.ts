@@ -48,12 +48,20 @@ const config: HardhatUserConfig = {
       blockGasLimit: 30_000_000,
       throwOnCallFailures: false,
     },
-    mumbai: {
-      url: process.env.SEPOLIA_RPC_URL,
+    // mumbai: {
+    //   url: process.env.SEPOLIA_RPC_URL,
+    //   accounts: [`0x${process.env.PRIVATE_KEY}`],
+    // },
+    // verificationNetwork: {
+    //   url: process.env.NETWORK_RPC ?? "",
+    // },
+    puppynet: {
+      url: "https://puppynet.shibrpc.com/",
       accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
-    verificationNetwork: {
-      url: process.env.NETWORK_RPC ?? "",
+    shibarium: {
+      url: "https://www.shibrpc.com",
+      accounts: [`0x${process.env.PRIVATE_KEY}`],
     },
   },
   gasReporter: {
@@ -61,7 +69,28 @@ const config: HardhatUserConfig = {
     currency: "USD",
   },
   etherscan: {
-    apiKey: process.env.EXPLORER_API_KEY,
+    apiKey: {
+      shibarium: "abc",
+      puppynet: "abc",
+    },
+    customChains: [
+      {
+        network: "shibarium",
+        chainId: 109,
+        urls: {
+          apiURL: "https://www.shibariumscan.io/api/",
+          browserURL: "https://www.shibariumscan.io/",
+        },
+      },
+      {
+        network: "puppynet",
+        chainId: 157,
+        urls: {
+          apiURL: "https://puppyscan.shib.io/api/",
+          browserURL: "https://puppyscan.shib.io/",
+        },
+      },
+    ],
   },
   preprocess: {
     eachLine: (hre) => ({

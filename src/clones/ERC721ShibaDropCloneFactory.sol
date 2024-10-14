@@ -3,12 +3,12 @@ pragma solidity 0.8.17;
 
 import { ERC721ShibaDropCloneable } from "./ERC721ShibaDropCloneable.sol";
 
-import { Clones } from "openzeppelin-contracts/proxy/Clones.sol";
+import { Clones } from "@openzeppelin/contracts/proxy/Clones.sol";
 
 contract ERC721ShibaDropCloneFactory {
     address public immutable shibaDropCloneableUpgradeableImplementation;
-    address public constant DEFAULT_SHIBADROP =
-        0x4a5E9F41d59DbEb6CA907A148203B13a5Ce12a85;
+    address private constant DEFAULT_SHIBADROP =
+        0x0Fa99382039A49e2f9Cb487566De81EA085d002f;
 
     event NewInstance(address indexed instance, address indexed creator);
 
@@ -22,14 +22,14 @@ contract ERC721ShibaDropCloneFactory {
         string memory name,
         string memory symbol,
         bytes32 salt
-    ) external returns (address) {
+    ) external returns (address instance) {
         // Derive a pseudo-random salt, so clone addresses don't collide
         // across chains.
         bytes32 cloneSalt = keccak256(
             abi.encodePacked(salt, blockhash(block.number))
         );
 
-        address instance = Clones.cloneDeterministic(
+        instance = Clones.cloneDeterministic(
             shibaDropCloneableUpgradeableImplementation,
             cloneSalt
         );

@@ -10,7 +10,7 @@ import { ERC1155 } from "../../solady/tokens/ERC1155.sol";
 abstract contract ERC1155ConduitPreapproved is ERC1155 {
     /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
-        0x1E0049783F008A0085193E00003D00cd54003c71;
+        0x7a236da740545ffFA00Be6ad5957bF3a118Dfd42;
 
     function safeTransferFrom(
         address from,

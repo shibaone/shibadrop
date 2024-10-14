@@ -22,11 +22,11 @@ import { ITransferValidator721 } from "../interfaces/ITransferValidator.sol";
 
 import { TwoStepOwnable } from "utility-contracts/TwoStepOwnable.sol";
 
-import { IERC2981 } from "openzeppelin-contracts/interfaces/IERC2981.sol";
+import { IERC2981 } from "@openzeppelin/contracts/interfaces/IERC2981.sol";
 
 import {
     IERC165
-} from "openzeppelin-contracts/utils/introspection/IERC165.sol";
+} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 /**
  * @title  ERC721ContractMetadataCloneable
@@ -133,8 +133,10 @@ contract ERC721ContractMetadataCloneable is
         // Ensure the sender is only the owner or contract itself.
         _onlyOwnerOrSelf();
 
+        uint64 supplyMaxValue = type(uint64).max;
+
         // Ensure the max supply does not exceed the maximum value of uint64.
-        if (newMaxSupply > 2**64 - 1) {
+        if (newMaxSupply > supplyMaxValue) {
             revert CannotExceedMaxSupplyOfUint64(newMaxSupply);
         }
 

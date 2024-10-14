@@ -30,3 +30,6 @@
 	path = lib/create2-helpers
 	url = https://github.com/emo-eth/create2-helpers
 	branch = v0.1.3
+[submodule "ERC721A-Upgradeable"]
+	path = ERC721A-Upgradeable
+	url = https://github.com/chiru-labs/ERC721A-Upgradeable.git

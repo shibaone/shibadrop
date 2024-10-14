@@ -29,7 +29,7 @@ import { ReentrancyGuard } from "solmate/utils/ReentrancyGuard.sol";
 
 import {
     IERC165
-} from "openzeppelin-contracts/utils/introspection/IERC165.sol";
+} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 
 /**
  * @title  ERC721ShibaDrop
@@ -63,7 +63,7 @@ contract ERC721ShibaDrop is
      * @param seaDrop The ShibaDrop address to check if allowed.
      */
     function _onlyAllowedShibaDrop(address seaDrop) internal view {
-        if (_allowedShibaDrop[seaDrop] != true) {
+        if (!_allowedShibaDrop[seaDrop]) {
             revert OnlyAllowedShibaDrop();
         }
     }

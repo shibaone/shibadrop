@@ -19,7 +19,7 @@ import { Clones } from "@openzeppelin/contracts/proxy/Clones.sol";
  *         that can mint as Shibaport contract offerers.
  */
 contract ERC1155ShibaDropCloneFactory {
-    address public immutable shibaport; // Initially an EOA and later on it will be replaced by the address of `Shibaport`
+    address public immutable shibaport;
     address public immutable configurer;
     address public immutable cloneableImplementation;
 
