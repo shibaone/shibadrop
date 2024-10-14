@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+pragma solidity 0.8.17;
 
 import {
     ERC1155ShibaDropContractOffererStorage
@@ -50,7 +50,7 @@ contract ERC1155ShibaDropContractOffererImplementation is
 
     /// @notice The delegation registry.
     IDelegationRegistry public constant DELEGATION_REGISTRY =
-        IDelegationRegistry(0x6fcceD73dDaF1a3455E6c951e9d7a0ABcBD115d6);
+        IDelegationRegistry(0x95bED224fFC17135d39502b0d437bF72b3594Fba);
 
     /// @notice The original address of this contract, to ensure that it can
     ///         only be called into with delegatecall.

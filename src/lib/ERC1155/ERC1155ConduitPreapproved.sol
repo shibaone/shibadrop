@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+pragma solidity 0.8.17;
 
 import { ERC1155 } from "../../solady/tokens/ERC1155.sol";
 
@@ -10,7 +10,7 @@ import { ERC1155 } from "../../solady/tokens/ERC1155.sol";
 abstract contract ERC1155ConduitPreapproved is ERC1155 {
     /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
-        0xf981c35f969A16831D2C55FEbcAac75c1B45dec3;
+        0x7a236da740545ffFA00Be6ad5957bF3a118Dfd42;
 
     function safeTransferFrom(
         address from,

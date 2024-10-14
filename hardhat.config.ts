@@ -29,7 +29,7 @@ const config: HardhatUserConfig = {
   solidity: {
     compilers: [
       {
-        version: "0.8.25",
+        version: "0.8.17",
         settings: {
           viaIR: false,
           optimizer: {
@@ -48,13 +48,13 @@ const config: HardhatUserConfig = {
       blockGasLimit: 30_000_000,
       throwOnCallFailures: false,
     },
-    mumbai: {
-      url: process.env.SEPOLIA_RPC_URL,
-      accounts: [`0x${process.env.PRIVATE_KEY}`],
-    },
-    verificationNetwork: {
-      url: process.env.NETWORK_RPC ?? "",
-    },
+    // mumbai: {
+    //   url: process.env.SEPOLIA_RPC_URL,
+    //   accounts: [`0x${process.env.PRIVATE_KEY}`],
+    // },
+    // verificationNetwork: {
+    //   url: process.env.NETWORK_RPC ?? "",
+    // },
     puppynet: {
       url: "https://puppynet.shibrpc.com/",
       accounts: [`0x${process.env.PRIVATE_KEY}`],
@@ -70,7 +70,7 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-      shibarium: "abc", //literally anything here will work
+      shibarium: "abc",
       puppynet: "abc",
     },
     customChains: [

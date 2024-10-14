@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+pragma solidity 0.8.17;
 
 import { ERC721ACloneable } from "./ERC721ACloneable.sol";
 
@@ -10,7 +10,7 @@ import { ERC721ACloneable } from "./ERC721ACloneable.sol";
 abstract contract ERC721AConduitPreapprovedCloneable is ERC721ACloneable {
     /// @dev The canonical ShibaSea conduit.
     address internal constant _CONDUIT =
-        0xf981c35f969A16831D2C55FEbcAac75c1B45dec3;
+        0x7a236da740545ffFA00Be6ad5957bF3a118Dfd42;
 
     /**
      * @dev Returns if the `operator` is allowed to manage all of the

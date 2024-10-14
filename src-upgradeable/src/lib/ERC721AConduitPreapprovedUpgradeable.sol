@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+pragma solidity 0.8.17;
 
 import { ERC721AUpgradeable } from "../../lib/ERC721A-Upgradeable/contracts/ERC721AUpgradeable.sol";
 
@@ -9,7 +9,7 @@ import { ERC721AUpgradeable } from "../../lib/ERC721A-Upgradeable/contracts/ERC7
  */
 abstract contract ERC721AConduitPreapprovedUpgradeable is ERC721AUpgradeable {
     /// @dev The canonical ShibaSea conduit.
-    address internal constant _CONDUIT = 0xf981c35f969A16831D2C55FEbcAac75c1B45dec3;
+    address internal constant _CONDUIT = 0x7a236da740545ffFA00Be6ad5957bF3a118Dfd42;
 
     /**
      * @notice Deploy the token contract with its name and symbol.
