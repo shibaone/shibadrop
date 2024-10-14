@@ -33,3 +33,9 @@
 [submodule "ERC721A-Upgradeable"]
 	path = ERC721A-Upgradeable
 	url = https://github.com/chiru-labs/ERC721A-Upgradeable.git
+[submodule "PermitC"]
+	path = PermitC
+	url = git@github.com:limitbreakinc/PermitC.git
+[submodule "lib/PermitC"]
+	path = lib/PermitC
+	url = git@github.com:limitbreakinc/PermitC.git

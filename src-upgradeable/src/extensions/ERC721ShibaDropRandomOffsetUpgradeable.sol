@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+pragma solidity 0.8.24;
 
 import { ERC721ShibaDropUpgradeable } from "../ERC721ShibaDropUpgradeable.sol";
 import {

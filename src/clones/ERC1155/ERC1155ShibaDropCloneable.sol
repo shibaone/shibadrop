@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.25;
+pragma solidity 0.8.24;
 
 import {
     ERC1155ShibaDropContractOffererCloneable
@@ -80,5 +80,9 @@ contract ERC1155ShibaDropCloneable is ERC1155ShibaDropContractOffererCloneable {
     ) external {
         // Burn the tokens.
         _batchBurn(msg.sender, from, ids, amounts);
+    }
+
+    function contractURI() external view override returns (string memory) {
+        return _baseURI;
     }
 }
